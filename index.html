@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perpustakaan E-Books Otomotif</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px 20px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .content {
+            padding: 40px 20px;
+        }
+
+        .search-box {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-box button {
+            padding: 12px 25px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+
+        .search-box button:hover {
+            background: #764ba2;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 15px;
+            background: #f0f0f0;
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .book-card {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .book-icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .book-title {
+            font-weight: bold;
+            font-size: 1.05em;
+            margin-bottom: 10px;
+            color: #333;
+            word-break: break-word;
+        }
+
+        .book-size {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .book-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-open {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-open:hover {
+            background: #764ba2;
+        }
+
+        .btn-download {
+            background: #e8f4f8;
+            color: #667eea;
+            border: 1px solid #667eea;
+        }
+
+        .btn-download:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .list-view .books-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .list-view .book-card {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .list-view .book-icon {
+            margin: 0;
+            min-width: 50px;
+        }
+
+        .list-view .book-info {
+            flex: 1;
+        }
+
+        .list-view .book-title {
+            margin-bottom: 5px;
+        }
+
+        .list-view .book-actions {
+            min-width: 200px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .view-btn {
+            padding: 8px 15px;
+            background: #f0f0f0;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .view-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .footer {
+            background: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+            color: #888;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Perpustakaan E-Books Otomotif</h1>
+            <p>Koleksi lengkap buku elektronik tentang Sistem Otomotif, Hybrid & Electric Vehicles</p>
+            <p style="font-size: 0.9em; opacity: 0.8; margin-top: 8px;">📁 EBOOKS + pengetahuan</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalBooks">0</div>
+                    <div class="stat-label">Total Buku</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="totalSize">0</div>
+                    <div class="stat-label">Total Ukuran</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="avgSize">0</div>
+                    <div class="stat-label">Rata-rata</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Cari buku berdasarkan judul...">
+                <button onclick="searchBooks()">🔍 Cari</button>
+            </div>
+
+            <div class="view-toggle">
+                <button class="view-btn active" onclick="setView('grid')">📊 Grid View</button>
+                <button class="view-btn" onclick="setView('list')">📋 List View</button>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterBySize('all')">Semua Ukuran</button>
+                <button class="filter-btn" onclick="filterBySize('small')">< 5MB</button>
+                <button class="filter-btn" onclick="filterBySize('medium')">5-20MB</button>
+                <button class="filter-btn" onclick="filterBySize('large')">> 20MB</button>
+            </div>
+
+            <div id="booksContainer" class="books-grid"></div>
+            <div id="noResults" class="no-results" style="display: none;">
+                Tidak ada buku yang ditemukan
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2026 Perpustakaan E-Books. Semua file tersimpan secara lokal.</p>
+        </div>
+    </div>
+
+    <script>
+        const books = [
+            // EBOOKS Folder
+            { name: "ACDELCO - HYBRID & ELECTRIC VEHICLE.pdf", size: 7.0, folder: "EBOOKS" },
+            { name: "ADAS MA600 Calibration Toolset User Manual.pdf", size: 1.4, folder: "EBOOKS" },
+            { name: "ADAS_Calibration.pdf", size: 3.5, folder: "EBOOKS" },
+            { name: "AUTOMOTIVE CONTROL SYSTEMS.pdf", size: 6.5, folder: "EBOOKS" },
+            { name: "Advanced Driver Assistance Systems (ADAS) Specialist Test.pdf", size: 1.4, folder: "EBOOKS" },
+            { name: "Advanced battery management technologies for electric vehicles 2019.pdf", size: 16, folder: "EBOOKS" },
+            { name: "Automobile Electrical and Electronic Systems 5th Edition by Tom Denton.pdf", size: 50, folder: "EBOOKS" },
+            { name: "Automotive Air-conditioning and Climate Control Systems by Steven Daly.pdf", size: 7.7, folder: "EBOOKS" },
+            { name: "Automotive Sensors Bosch.pdf", size: 3.7, folder: "EBOOKS" },
+            { name: "Automotive-ECU-architecture-and-logic.pdf", size: 7.6, folder: "EBOOKS" },
+            { name: "Bosch Automotive Electrics and Automotive Electronics.pdf", size: 7.8, folder: "EBOOKS" },
+            { name: "Bosch Automotive Networking, Driving Stability Systems, Electronics.pdf", size: 12, folder: "EBOOKS" },
+            { name: "Bosch Diesel Engine Management Systems and Components.pdf", size: 13, folder: "EBOOKS" },
+            { name: "Bosch Electronic Diesel Control (EDC) Edition 2001.pdf", size: 1.8, folder: "EBOOKS" },
+            { name: "CANopenTechnical Manual.pdf", size: 8.2, folder: "EBOOKS" },
+            { name: "DENSO Engine-Management-System-Catalogue.pdf", size: 3.2, folder: "EBOOKS" },
+            { name: "Denso aircond catalogue-2020.pdf", size: 20, folder: "EBOOKS" },
+            { name: "Denso-RV-HVAC-Service-Manual.pdf", size: 2.5, folder: "EBOOKS" },
+            { name: "Diagnosing Keys & Immobilizer Systems.pdf", size: 17, folder: "EBOOKS" },
+            { name: "Ecu Modules Repair Ebook.pdf", size: 12, folder: "EBOOKS" },
+            { name: "Electric and Hybrid Electric Vehicles (1st Edition) 2022.pdf", size: 69, folder: "EBOOKS" },
+            { name: "Electric and Hybrid Vehicles (3rd Edition) 2024.pdf", size: 95, folder: "EBOOKS" },
+            { name: "Engine Misfire and Fuel Trim Analysis Techniques.pdf", size: 34, folder: "EBOOKS" },
+            { name: "Engine-Management-Systems-Product-Information-Catalogue.pdf", size: 3.2, folder: "EBOOKS" },
+            { name: "Gasoline_Engine_Management_Systems_and_Components.pdf", size: 11, folder: "EBOOKS" },
+            { name: "Hybrid and Electric Vehicles.pdf", size: 5.3, folder: "EBOOKS" },
+            { name: "ISUZU SERVICE TRAINING.pdf", size: 9.7, folder: "EBOOKS" },
+            { name: "Introduction to ADAS.pdf", size: 1.9, folder: "EBOOKS" },
+            { name: "Kia Automotive Electrical Diagnosis Course.pdf", size: 17, folder: "EBOOKS" },
+            { name: "MPX (multiplex communication) System .pdf", size: 3.3, folder: "EBOOKS" },
+            { name: "Materi CR-V Hybrid.pdf", size: 9.8, folder: "EBOOKS" },
+            { name: "Materi Training Electronic Fuel Injection-Engine Management.pdf", size: 4.3, folder: "EBOOKS" },
+            { name: "Mitsubishi Engine 4m40 Repair Manual.pdf", size: 8.6, folder: "EBOOKS" },
+            { name: "Modern Automotive Technology 7th.pdf", size: 39, folder: "EBOOKS" },
+            { name: "Modern Car Handbook 2020.pdf", size: 6.5, folder: "EBOOKS" },
+            { name: "Service Diagnosis and Measurement Manual SAIC Motor.pdf", size: 19, folder: "EBOOKS" },
+            { name: "TROUBLESHOOTING AUTOMOTIVE COMPUTER.pdf", size: 2.1, folder: "EBOOKS" },
+            { name: "Toyota Hybrid System (THS) 1 & 2 Operation.pdf", size: 20, folder: "EBOOKS" },
+            { name: "Toyota Hybrid System Training Manual.pdf", size: 0.86, folder: "EBOOKS" },
+            { name: "Troubleshooting Automotive Computer Systems.pdf", size: 2.3, folder: "EBOOKS" },
+            { name: "Understanding Automotive Electronics.pdf", size: 17, folder: "EBOOKS" },
+            
+            // Pengetahuan Folder
+            { name: "Emergency Response Quick Guide_2022 - 2024 Corolla HV.pdf", size: 6.3, folder: "pengetahuan" },
+            { name: "Emergency Response Quick Reference_2023-2024 Corolla Cross HV.pdf", size: 5.5, folder: "pengetahuan" },
+            { name: "Toyota Hilux HV T ERG 103 D.pdf", size: 3.3, folder: "pengetahuan" },
+            { name: "Daihatsu Installs the eSMART HYBRID.pdf", size: 0.52, folder: "pengetahuan" },
+            { name: "Emergency Response Guide 2025-NISSAN-LEAF.pdf", size: 3.8, folder: "pengetahuan" },
+            { name: "IMMOBILISER SYSTEM (KEY REGISTRATION) CALYA.pdf", size: 0.18, folder: "pengetahuan" },
+            { name: "EPS HONDA FIT.pdf", size: 8.6, folder: "pengetahuan" },
+            { name: "Mild Hybrid System and Micro Hybrid System.pdf", size: 0.64, folder: "pengetahuan" },
+            { name: "Mode kerja ECU ECM  .pdf", size: 0.07, folder: "pengetahuan" },
+            { name: "For Dismantlers GRAND VITARA.pdf", size: 3.4, folder: "pengetahuan" },
+            { name: "For DismantlersVITARAS-CROSS.pdf", size: 1.5, folder: "pengetahuan" },
+            { name: "SWIFT SPORT Dismantling Manual.pdf", size: 0.84, folder: "pengetahuan" },
+            { name: "Understanding the Toyota Hybrid Braking System.pdf", size: 5.0, folder: "pengetahuan" },
+            { name: "TOYOTA SAFETY SENSE.pdf", size: 1.1, folder: "pengetahuan" },
+            { name: "TOYOTA SAFETY SENSE 2.5 & 2.5+.pdf", size: 0.57, folder: "pengetahuan" },
+            { name: "How To find Toyota Ignition System Faults Fast.pdf", size: 5.0, folder: "pengetahuan" },
+            { name: "Ford 2020 - 2023 MY OBD System Operation.pdf", size: 0.73, folder: "pengetahuan" },
+            { name: "Toyota Corolla 1.6, 4A-FE, 4AFE, diagrama de la ECU, ECU pinout.pdf", size: 4.3, folder: "pengetahuan" },
+            { name: "DTC U0100 - External Communication Fault.pdf", size: 0.20, folder: "pengetahuan" },
+            { name: "CAN-Training.pdf", size: 0.30, folder: "pengetahuan" },
+            { name: "Stability of LiFePO4 in Water .pdf", size: 0.33, folder: "pengetahuan" },
+            { name: "CAN_BUS_Ranger-Everest.pdf", size: 0.61, folder: "pengetahuan" },
+            { name: "FE series FE6,FE6T & FE6TA.pdf", size: 0.92, folder: "pengetahuan" },
+            { name: "automatic transmission Aw03-72LE.pdf", size: 5.7, folder: "pengetahuan" },
+            { name: "automatic transmission A-240L-A241E-A243.pdf", size: 3.8, folder: "pengetahuan" },
+            { name: "IMMOBILISER SYSTEM (KEY REGISTRATION).pdf", size: 0.46, folder: "pengetahuan" },
+            { name: "TOYOTA ENGINE IMMOBILISER SYSTEM.pdf", size: 1.3, folder: "pengetahuan" },
+            { name: "TROUBLESHOOTING SUZUKI CARRY FUTURA 1.5 G15A.pdf", size: 2.5, folder: "pengetahuan" },
+            { name: "Sistem Pengapian Mobil Mitsubishi T120ss.docx", size: 0.32, folder: "pengetahuan" },
+            { name: "Kontrol Injeksi Bahan Bakar dan Pemutus Bahan Bakar.pdf", size: 0.50, folder: "pengetahuan" },
+            { name: "Data Parameters or Stream.pdf", size: 0.17, folder: "pengetahuan" },
+            { name: "Toyota Course; Idle air control system.pdf", size: 1.1, folder: "pengetahuan" },
+            { name: "SmartChargingSystem_Guide.pdf", size: 3.5, folder: "pengetahuan" },
+            { name: "Monitor Cerdas untuk Baterai Otomotif.docx", size: 0.70, folder: "pengetahuan" },
+            { name: "ETACS Functionality Development for the OUTLANDER.pdf", size: 1.4, folder: "pengetahuan" },
+            { name: "'LEARNING' PADA COMMON RAIL ENGINE 4D5 DI-D.pdf", size: 0.18, folder: "pengetahuan" },
+            { name: "Diesel Injection Pump HINO Dutro - TOYOTA Dyna (N04C-T).pdf", size: 1.1, folder: "pengetahuan" },
+            { name: "LIST Automatic Transmission.pdf", size: 17, folder: "pengetahuan" },
+            { name: "Kerusakan ECU mitsubishi colt T120SS.pdf", size: 0.24, folder: "pengetahuan" },
+            { name: "PANDUAN FITUR, TROUBLESHOOTING, WIRING & REGISTER REMOTE CONTROL Grand Livina SV.pdf", size: 0.76, folder: "pengetahuan" },
+            { name: "MULTIPLEX COMMUNICATION SYSTEM AYLA.pdf", size: 0.78, folder: "pengetahuan" },
+            { name: "Honda CVT Manual (AAMCO).pdf", size: 6.8, folder: "pengetahuan" },
+            { name: "Power Sliding Doors Honda Odyssey.pdf", size: 2.3, folder: "pengetahuan" },
+            { name: "Table of Applicable ECU.pdf", size: 1.4, folder: "pengetahuan" },
+            { name: "Manajemen termal mesin seri N.docx", size: 0.50, folder: "pengetahuan" },
+            { name: "IDENTIFYING CALIBRATION CODES ON COMMON RAIL.pdf", size: 0.19, folder: "pengetahuan" },
+            { name: "DTCList_MD1 canter.pdf", size: 1.2, folder: "pengetahuan" },
+            { name: "Transponder and Remote Controls Programming Manually.pdf", size: 2.2, folder: "pengetahuan" },
+            { name: "Spark Plug & Diesel Glow Plug CATALOGUE 2017-18.pdf", size: 5.5, folder: "pengetahuan" },
+            { name: "Table DTC (Hex) Root Description Failure.pdf", size: 1.0, folder: "pengetahuan" },
+            { name: "HONDA DUAL MODE CHARGING SYSTEM.pdf", size: 1.1, folder: "pengetahuan" },
+            { name: "Inspection Mode Hybrid.docx", size: 0.01, folder: "pengetahuan" },
+            { name: "MATIC [A4Q-D1]terios.pdf", size: 1.9, folder: "pengetahuan" },
+            { name: "Toyota Smart Entry & Start System.pdf", size: 2.6, folder: "pengetahuan" },
+            { name: "VITARA  S-CROSS  Strong Hybrid System.pdf", size: 1.5, folder: "pengetahuan" },
+            { name: "SWIFT SPORT  SHVS Mild Hybrid System.pdf", size: 0.84, folder: "pengetahuan" },
+            { name: "OBD System Operation.pdf", size: 0.73, folder: "pengetahuan" },
+            { name: "Pemecahkan masalah Sistem Common Rail.docx", size: 0.15, folder: "pengetahuan" },
+            { name: "Cars-LCV Ecu Type List.pdf", size: 1.0, folder: "pengetahuan" },
+            { name: "CARA MEMBACA WIRRING DIAGRAM STANDARD ISO.pdf", size: 0.92, folder: "pengetahuan" },
+            { name: "TOYOTA HYBRID CONTROL SYSTEM.pdf", size: 0.17, folder: "pengetahuan" },
+            { name: "HYBRID CONTROL SYSTEM.pdf", size: 9.3, folder: "pengetahuan" },
+            { name: "CAN_bus_diagnostics.pdf", size: 0.45, folder: "pengetahuan" },
+            { name: "Hyundai Emergency Response Guide - KONA Electric.pdf", size: 3.2, folder: "pengetahuan" },
+            { name: "KONA HybridEmergency Response Guide.pdf", size: 3.9, folder: "pengetahuan" },
+            { name: "IONIQ5-NE-EV-Emergency-Response-Guide_Aust_Final-2021.pdf", size: 2.0, folder: "pengetahuan" },
+            { name: "EMERGENCY RESPONSE GUIDE RENAULT GROUP.pdf", size: 1.5, folder: "pengetahuan" },
+            { name: "Emergency Response Guide 2025 CR-V eFCEV.pdf", size: 3.3, folder: "pengetahuan" },
+            { name: "Emergency Response Guide 2025 Civic Hybrid.pdf", size: 1.3, folder: "pengetahuan" },
+            { name: "Hyundai Ioniq HEVEmergency Response Guide .pdf", size: 2.1, folder: "pengetahuan" },
+            { name: "iQ EVElectric Vehicle.pdf", size: 2.2, folder: "pengetahuan" },
+            { name: "VolkswagenAudi Vehicle Communication Software Manual.pdf", size: 0.89, folder: "pengetahuan" },
+            { name: "Toyota 3S-FE 3S-GE Electrical Wiring Diagrams.pdf", size: 9.3, folder: "pengetahuan" },
+            { name: "Hybrid Vehicle Systems Panel Trainer_LJCreate.pdf", size: 4.1, folder: "pengetahuan" },
+            { name: "HONDA AIMING DRIVING SUPPORT SYSTEMS.pdf", size: 0.75, folder: "pengetahuan" },
+            { name: "Service Manual Toyota 2NR-FE.pdf", size: 9.9, folder: "pengetahuan" },
+            { name: "Manual All Toyota Wiring Diagram and Ecu Pinout.pdf", size: 128, folder: "pengetahuan" },
+            { name: "Connector Pinout North America, Europe and Asia OBD Pinouts.pdf", size: 0.94, folder: "pengetahuan" },
+            { name: "Ignition Coils all Brands.pdf", size: 39, folder: "pengetahuan" },
+            { name: "keys and Control Units  Immobilizer for all brands.pdf", size: 2.7, folder: "pengetahuan" },
+            { name: "identifikasi-efi-soluna_.pdf", size: 1.9, folder: "pengetahuan" },
+            { name: "Materi Training Honda eN1.pdf", size: 3.2, folder: "pengetahuan" },
+            { name: "Materi Training Honda Step WGN.pdf", size: 4.1, folder: "pengetahuan" },
+            { name: "Automotive Electronic.pdf", size: 2.8, folder: "pengetahuan" },
+            { name: "Version List Engine Ecu maker & model.pdf", size: 4.5, folder: "pengetahuan" },
+            { name: "CAN BUS & LIN BUS education board.pdf", size: 1.6, folder: "pengetahuan" },
+            { name: "KEY FREE SCHEMATIC (STOP START BUTTON) RUSH-TERIOS.pdf", size: 0.18, folder: "pengetahuan" },
+            { name: "Membaca & Memahami Data OBD II.pdf", size: 0.23, folder: "pengetahuan" }
+        ];
+
+        let filteredBooks = books;
+        let currentView = 'grid';
+        let currentSizeFilter = 'all';
+
+        function formatSize(mb) {
+            if (mb < 1) return (mb * 1024).toFixed(0) + ' KB';
+            return mb.toFixed(1) + ' MB';
+        }
+
+        function getSizeCategory(mb) {
+            if (mb < 5) return 'small';
+            if (mb < 20) return 'medium';
+            return 'large';
+        }
+
+        function updateStats() {
+            const total = books.length;
+            const totalSize = books.reduce((sum, book) => sum + book.size, 0);
+            const avgSize = totalSize / total;
+
+            document.getElementById('totalBooks').textContent = total;
+            document.getElementById('totalSize').textContent = formatSize(totalSize);
+            document.getElementById('avgSize').textContent = formatSize(avgSize);
+        }
+
+        function renderBooks(booksToRender = books) {
+            const container = document.getElementById('booksContainer');
+            container.innerHTML = '';
+
+            if (booksToRender.length === 0) {
+                document.getElementById('noResults').style.display = 'block';
+                return;
+            }
+
+            document.getElementById('noResults').style.display = 'none';
+
+            booksToRender.forEach((book, index) => {
+                const encodedName = encodeURIComponent(book.name);
+                const folderPath = book.folder || 'EBOOKS';
+                const card = document.createElement('div');
+                card.className = 'book-card';
+                card.innerHTML = `
+                    <div class="book-icon">📄</div>
+                    <div class="book-title">${book.name}</div>
+                    <div class="book-size">📊 ${formatSize(book.size)} <span style="color: #667eea; font-size: 0.85em;">(${folderPath})</span></div>
+                    <div class="book-actions">
+                        <a href="${folderPath}/${encodedName}" target="_blank" class="btn btn-open">Buka</a>
+                        <a href="${folderPath}/${encodedName}" download class="btn btn-download">Download</a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function searchBooks() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            filteredBooks = books.filter(book => 
+                book.name.toLowerCase().includes(query)
+            );
+
+            if (currentSizeFilter !== 'all') {
+                filteredBooks = filteredBooks.filter(book => 
+                    getSizeCategory(book.size) === currentSizeFilter
+                );
+            }
+
+            renderBooks(filteredBooks);
+        }
+
+        function filterBySize(size) {
+            currentSizeFilter = size;
+            
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (size === 'all') {
+                filteredBooks = books;
+            } else {
+                const query = document.getElementById('searchInput').value.toLowerCase();
+                filteredBooks = books.filter(book => {
+                    const matchesSearch = book.name.toLowerCase().includes(query);
+                    const matchesSize = getSizeCategory(book.size) === size;
+                    return matchesSearch && matchesSize;
+                });
+            }
+
+            renderBooks(filteredBooks);
+        }
+
+        function setView(view) {
+            currentView = view;
+            const container = document.getElementById('booksContainer');
+            
+            document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (view === 'list') {
+                container.classList.add('list-view');
+                container.style.display = 'flex';
+                container.style.flexDirection = 'column';
+                container.style.gap = '0';
+            } else {
+                container.classList.remove('list-view');
+                container.style.display = 'grid';
+            }
+
+            renderBooks(filteredBooks);
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', searchBooks);
+
+        updateStats();
+        renderBooks();
+    </script>
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Knowledge Base Chat - NotebookLM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 300px;
+            background: #fff;
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .sidebar-header p {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .sidebar-tabs {
+            display: flex;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: #f9f9f9;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9em;
+            color: #666;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .tab-content.hidden {
+            display: none;
+        }
+
+        .topic-item, .suggestion-item {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 3px solid #667eea;
+        }
+
+        .topic-item:hover, .suggestion-item:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+
+        .topic-item .title, .suggestion-item .text {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+        }
+
+        .topic-item .desc, .suggestion-item .desc {
+            font-size: 0.8em;
+            color: #888;
+            line-height: 1.4;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+        }
+
+        .chat-header {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .chat-header h1 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .chat-header p {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            display: flex;
+            gap: 10px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            line-height: 1.5;
+        }
+
+        .message.user .message-bubble {
+            background: #667eea;
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message.ai .message-bubble {
+            background: #f0f0f0;
+            color: #333;
+            border-bottom-left-radius: 4px;
+        }
+
+        .response-details {
+            font-size: 0.85em;
+            color: #888;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .sources {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .sources-title {
+            font-weight: 600;
+            font-size: 0.8em;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .source {
+            font-size: 0.8em;
+            color: #667eea;
+            margin-bottom: 4px;
+            padding-left: 8px;
+            border-left: 2px solid #667eea;
+        }
+
+        .related-topics {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #ddd;
+        }
+
+        .related-topics-title {
+            font-weight: 600;
+            font-size: 0.8em;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .related-topic {
+            display: inline-block;
+            background: #e8f0ff;
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 14px;
+            font-size: 0.75em;
+            margin-right: 6px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .related-topic:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #999;
+            text-align: center;
+        }
+
+        .empty-state-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .chat-input-area {
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+            background: white;
+        }
+
+        .input-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .input-form input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .input-form input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .input-form button {
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .input-form button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        .input-form button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .typing {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #667eea;
+            animation: bounce 1.4s infinite;
+        }
+
+        .typing span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                opacity: 0.3;
+                transform: translateY(0);
+            }
+            40% {
+                opacity: 1;
+                transform: translateY(-10px);
+            }
+        }
+
+        .confidence-badge {
+            display: inline-block;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 8px;
+        }
+
+        .confidence-badge.high {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .confidence-badge.low {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                max-height: 30vh;
+            }
+
+            .main-content {
+                width: 100%;
+            }
+
+            body {
+                flex-direction: column;
+            }
+
+            .message-bubble {
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>🤖 AI Knowledge Base</h2>
+            <p>Basis pengetahuan otomotif</p>
+        </div>
+
+        <div class="sidebar-tabs">
+            <button class="tab-btn active" onclick="switchTab('topics')">Topik</button>
+            <button class="tab-btn" onclick="switchTab('suggestions')">Saran</button>
+        </div>
+
+        <div id="topics-tab" class="tab-content">
+            <div id="topics-list"></div>
+        </div>
+
+        <div id="suggestions-tab" class="tab-content hidden">
+            <div id="suggestions-list"></div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="chat-header">
+            <h1>💬 Knowledge Base Chat</h1>
+            <p>Tanya jawab tentang kendaraan hybrid, listrik, ADAS, dan sistem otomotif lainnya</p>
+        </div>
+
+        <div class="chat-messages" id="chat-messages">
+            <div class="empty-state">
+                <div class="empty-state-icon">🚗</div>
+                <h2>Selamat datang!</h2>
+                <p>Mulai percakapan dengan mengajukan pertanyaan tentang otomotif</p>
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <div class="input-form" onsubmit="sendMessage(event)">
+                <input 
+                    type="text" 
+                    id="message-input" 
+                    placeholder="Ketik pertanyaan Anda..." 
+                    disabled
+                >
+                <button type="submit" id="send-btn" disabled>Kirim</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5001/api';
+        let isLoading = false;
+
+        // Load initial data
+        async function initializeApp() {
+            try {
+                await loadTopics();
+                await loadSuggestions();
+                document.getElementById('message-input').disabled = false;
+                document.getElementById('send-btn').disabled = false;
+            } catch (error) {
+                console.error('Error initializing app:', error);
+            }
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+
+            event.target.classList.add('active');
+            document.getElementById(`${tab}-tab`).classList.remove('hidden');
+        }
+
+        async function loadTopics() {
+            try {
+                const response = await fetch(`${API_URL}/topics`);
+                const data = await response.json();
+
+                const topicsList = document.getElementById('topics-list');
+                topicsList.innerHTML = '';
+
+                data.topics && Object.entries(data.topics).forEach(([name, info]) => {
+                    const div = document.createElement('div');
+                    div.className = 'topic-item';
+                    div.innerHTML = `
+                        <div class="title">${name}</div>
+                        <div class="desc">${info.description}</div>
+                    `;
+                    div.onclick = () => askAboutTopic(name);
+                    topicsList.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Error loading topics:', error);
+            }
+        }
+
+        async function loadSuggestions() {
+            try {
+                const response = await fetch(`${API_URL}/suggestions`);
+                const data = await response.json();
+
+                const suggestionsList = document.getElementById('suggestions-list');
+                suggestionsList.innerHTML = '';
+
+                data.suggestions && data.suggestions.forEach(suggestion => {
+                    const div = document.createElement('div');
+                    div.className = 'suggestion-item';
+                    div.innerHTML = `
+                        <div class="text">${suggestion}</div>
+                    `;
+                    div.onclick = () => askQuestion(suggestion);
+                    suggestionsList.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Error loading suggestions:', error);
+            }
+        }
+
+        async function sendMessage(event) {
+            event.preventDefault();
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+
+            if (!message || isLoading) return;
+
+            await askQuestion(message);
+            input.value = '';
+        }
+
+        async function askQuestion(question) {
+            if (isLoading) return;
+
+            // Clear empty state
+            const emptyState = document.querySelector('.empty-state');
+            if (emptyState) emptyState.remove();
+
+            // Add user message
+            addMessage(question, 'user');
+
+            // Show loading
+            isLoading = true;
+            document.getElementById('send-btn').disabled = true;
+            addLoadingMessage();
+
+            try {
+                const response = await fetch(`${API_URL}/chat`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: question })
+                });
+
+                const data = await response.json();
+
+                // Remove loading message
+                removeLoadingMessage();
+
+                if (data.success) {
+                    addMessage(data, 'ai');
+                } else {
+                    addMessage('Terjadi kesalahan: ' + data.error, 'ai');
+                }
+            } catch (error) {
+                removeLoadingMessage();
+                addMessage('Error: ' + error.message, 'ai');
+            } finally {
+                isLoading = false;
+                document.getElementById('send-btn').disabled = false;
+                document.getElementById('message-input').focus();
+            }
+        }
+
+        function addMessage(content, sender) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+
+            if (sender === 'user') {
+                messageDiv.innerHTML = `<div class="message-bubble">${escapeHtml(content)}</div>`;
+            } else {
+                let html = `<div class="message-bubble">${escapeHtml(content.response)}
+                    <span class="confidence-badge ${content.confidence}">${content.confidence === 'high' ? '✓ Sangat Relevan' : '? Kurang Relevan'}</span>`;
+
+                if (content.sources && content.sources.length > 0) {
+                    html += `<div class="sources">
+                        <div class="sources-title">📚 Sumber:</div>
+                        ${content.sources.map(s => `<div class="source">• ${s}</div>`).join('')}
+                    </div>`;
+                }
+
+                if (content.related_topics && content.related_topics.length > 0) {
+                    html += `<div class="related-topics">
+                        <div class="related-topics-title">🔗 Topik Terkait:</div>
+                        ${content.related_topics.map(t => `
+                            <span class="related-topic" onclick="askQuestion('${t}')">${t}
+                            </span>`).join('')}
+                    </div>`;
+                }
+
+                html += '</div>';
+                messageDiv.innerHTML = html;
+            }
+
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function addLoadingMessage() {
+            const messagesContainer = document.getElementById('chat-messages');
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = 'loading-message';
+            loadingDiv.className = 'message ai';
+            loadingDiv.innerHTML = `<div class="message-bubble"><div class="typing"><span></span><span></span><span></span></div></div>`;
+            messagesContainer.appendChild(loadingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function removeLoadingMessage() {
+            const loading = document.getElementById('loading-message');
+            if (loading) loading.remove();
+        }
+
+        function askAboutTopic(topic) {
+            askQuestion(`Jelaskan tentang: ${topic}`);
+        }
+
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // Initialize on load
+        window.addEventListener('load', initializeApp);
+    </script>
+</body>
+</html>
