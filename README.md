@@ -33,24 +33,58 @@ Platform terintegrasi untuk manajemen koleksi e-book dengan AI chatbot berbasis 
 - **index.html**: Katalog e-book dengan search & filter
 - **chat.html**: AI chat interface dengan sidebar navigation
 
+### 5. **PDF to HTML Converter**
+- Konversi otomatis PDF ke format HTML yang dapat dibaca di browser
+- Preserve formatting, images, dan struktur dokumen
+- Generate index HTML untuk navigasi semua files
+- Responsive design dengan styling modern
+- Support untuk page navigation, text extraction, dan tables
+- Cepat dan aman untuk koleksi besar (41 PDF files)
+
+### 6. **Static Website untuk GitHub Pages** ✨ NEW
+- Deploy 124+ e-book ke GitHub Pages dalam hitungan menit
+- Search & filter functionality tanpa backend
+- Direct PDF download links
+- Responsive design (mobile/tablet/desktop)
+- 100% static HTML/CSS/JS - cepat & aman
+- Statistics dashboard (total books, size, breakdown)
+- Automated deployment script tersedia
+
 ## 📂 Struktur Direktori
 
 ```
 ebooks/
-├── README.md                   # Dokumentasi project
-├── server.py                   # Static file HTTP server (port 8000)
-├── api.py                      # REST API server (port 5000)
-├── notebook_api.py             # AI Knowledge Base API (port 5001)
-├── extract_knowledge.py        # PDF knowledge extraction tool
-├── get_files.py               # File listing utility
+├── README.md                        # Dokumentasi project
+├── requirements.txt                 # Python dependencies
+├── GITHUB_PAGES_DEPLOY.md           # GitHub Pages deployment guide ✨ NEW
 │
-├── EBOOKS/                     # 41 e-book files (573 MB)
-├── pengetahuan/               # 88 e-book files (362 MB)
-├── knowledge_base/            # Generated knowledge base data
+├── server.py                        # Static file HTTP server (port 8000)
+├── api.py                           # REST API server (port 5000)
+├── notebook_api.py                  # AI Knowledge Base API (port 5001)
+├── extract_knowledge.py             # PDF knowledge extraction tool
+├── pdf_to_html_converter.py         # PDF to HTML converter tool
+├── generate_books_manifest.py       # Generate book manifest JSON ✨ NEW
+├── get_files.py                     # File listing utility
 │
-├── home.html                  # Landing page
-├── index.html                 # Library catalog
-└── chat.html                  # AI chat interface
+├── Static Website Files ✨ NEW:
+├── index-github-pages.html          # Main static website  
+├── books_data.js                    # Book catalog (generated)
+├── books_manifest.json              # Book metadata (generated)
+├── web-server-static.py             # Local web server for testing
+├── deploy-to-github-pages.sh        # Auto-deploy script
+├── static-website-setup.html        # Interactive setup guide
+│
+├── EBOOKS/                          # 41 e-book files (573 MB) - Original PDF
+├── HTML_EBOOKS/                     # Converted HTML files
+│   ├── index.html                   # Index semua HTML books
+│   ├── *.html                       # Individual book pages
+│   └── images/                      # Page screenshots
+├── pengetahuan/                     # 88 e-book files (362 MB)
+├── knowledge_base/                  # Generated knowledge base data
+│
+├── home.html                        # Landing page (Flask app)
+├── index.html                       # Library catalog (Flask app)
+└── chat.html                        # AI chat interface (Flask app)
 ```
 
 ## 🚀 Quick Start
@@ -87,6 +121,110 @@ python3 notebook_api.py
 - **Home Page**: http://localhost:8000/home.html
 - **Library**: http://localhost:8000/index.html
 - **AI Chat**: http://localhost:8000/chat.html
+- **HTML Books**: http://localhost:8000/HTML_EBOOKS/index.html ✨ NEW
+
+## 🔄 PDF to HTML Converter (NEW Feature!)
+
+Untuk mengkonversi semua PDF di folder EBOOKS menjadi HTML yang dapat dibaca di browser:
+
+### Instalasi Dependencies
+```bash
+pip install -r requirements.txt
+# atau manual:
+pip install pdfplumber pdf2image Pillow weasyprint reportlab PyPDF2
+```
+
+### Cara Penggunaan
+
+**Konversi semua PDF ke HTML:**
+```bash
+python3 pdf_to_html_converter.py
+```
+
+Apa yang akan terjadi:
+1. ✅ Scan folder EBOOKS untuk semua file PDF
+2. ✅ Extract teks dan metadata dari setiap PDF
+3. ✅ Konversi page PDF ke images (PNG) untuk preview
+4. ✅ Generate HTML files dengan styling modern dan responsive
+5. ✅ Buat index.html untuk navigasi semua buku
+6. ✅ Simpan semua files di folder `HTML_EBOOKS/`
+
+### Hasil
+- **41 HTML files** (satu untuk setiap PDF di EBOOKS/)
+- **index.html** - Navigation page untuk semua buku
+- **images/** - Folder berisi preview images dari PDF pages
+- **Responsive design** - Readable di desktop, tablet, mobile
+
+Buka browser dan akses:
+- `http://localhost:8000/HTML_EBOOKS/` - View semua buku dalam HTML
+- Atau langsung buka `HTML_EBOOKS/index.html` di file manager
+
+## 🌐 Static Website untuk GitHub Pages (NEW!)
+
+Hosting website statis ke GitHub Pages dengan semua 124+ buku (EBOOKS + pengetahuan).
+
+### Setup Cepat (5 Menit)
+
+```bash
+# 1. Generate manifest
+python3 generate_books_manifest.py
+
+# 2. Test locally
+python3 web-server-static.py
+# Buka: http://localhost:8000/index-github-pages.html
+
+# 3. Deploy ke GitHub
+chmod +x deploy-to-github-pages.sh
+./deploy-to-github-pages.sh YOUR_USERNAME
+
+# Website tersedia di: https://YOUR_USERNAME.github.io/ebooks/
+```
+
+### Fitur Website Statis
+
+✨ **Features:**
+- 📚 Katalog lengkap 124+ buku (EBOOKS + pengetahuan)
+- 🔍 Search & filter functionality
+- 📊 Statistics dashboard
+- 🎨 Responsive design (mobile/tablet/desktop)
+- ⬇️ Direct PDF download links
+- 💻 100% static HTML/CSS/JS - tidak perlu backend
+- ⚡ Cepat, aman, dan scalable
+- 🚀 Auto-deploy script tersedia
+
+### File-file Penting
+
+| File | Fungsi |
+|------|--------|
+| `index-github-pages.html` | Main website file (rename ke `index.html`) |
+| `books_data.js` | Book catalog data (auto-generated) |
+| `books_manifest.json` | Book metadata (auto-generated) |
+| `deploy-to-github-pages.sh` | Automated deployment script |
+| `web-server-static.py` | Local testing server |
+| `GITHUB_PAGES_DEPLOY.md` | Detailed deployment guide |
+| `static-website-setup.html` | Interactive setup helper |
+
+### Dokumentasi
+
+Baca panduan lengkap di:
+- **[GITHUB_PAGES_DEPLOY.md](GITHUB_PAGES_DEPLOY.md)** - Step-by-step deployment
+- **[static-website-setup.html](static-website-setup.html)** - Interactive HTML guide
+
+### Struktur Data Website
+
+Website menggunakan data dari file `books_data.js`:
+```javascript
+{
+  "total_books": 124,
+  "total_size_mb": 932.63,
+  "ebooks_count": 41,
+  "pengetahuan_count": 83,
+  "books": [...]  // Array of all books
+}
+```
+
+Manifest auto-update saat menjalankan `generate_books_manifest.py`
+
 
 ## 📡 API Endpoints
 
@@ -161,9 +299,33 @@ heroku create
 git push heroku main
 ```
 
-### GitHub Pages (Frontend Only)
-- Push HTML/CSS/JS ke gh-pages
-- API URLs ke external endpoints
+### GitHub Pages (Static Website) ✨ NEW - Recommended!
+```bash
+# Generate books manifest
+python3 generate_books_manifest.py
+
+# Test locally
+python3 web-server-static.py
+# Akses: http://localhost:8000/index-github-pages.html
+
+# Deploy otomatis
+chmod +x deploy-to-github-pages.sh
+./deploy-to-github-pages.sh YOUR_USERNAME
+
+# Website tersedia di:
+# https://YOUR_USERNAME.github.io/ebooks/
+```
+
+**Features:**
+- 124+ buku dari EBOOKS + pengetahuan (total 935 MB)
+- Search & filter by size/name
+- Responsive design (mobile/tablet/desktop)
+- Direct PDF download links
+- 100% static - cepat & aman
+- No backend required
+
+**Setup Guide:** Lihat [GITHUB_PAGES_DEPLOY.md](GITHUB_PAGES_DEPLOY.md)  
+**Interactive Setup:** Buka [static-website-setup.html](static-website-setup.html)
 
 ### VPS (Full Control)
 - Rent VPS (DigitalOcean, Linode)

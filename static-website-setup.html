@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Website Setup Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        main {
+            padding: 40px 30px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 24px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        h3 {
+            color: #764ba2;
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .step-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .feature-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .info {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #eee;
+        }
+
+        .file-tree {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 20px 15px;
+            }
+
+            header {
+                padding: 30px 20px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Static Website untuk GitHub Pages</h1>
+            <p>Deploy koleksi E-Books Anda ke GitHub Pages dalam hitungan menit</p>
+        </header>
+
+        <main>
+            <!-- Overview -->
+            <section>
+                <h2>✨ Apa yang Disediakan?</h2>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <h4>📖 Katalog Lengkap</h4>
+                        <p>124+ buku dari EBOOKS dan pengetahuan folders</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔍 Search & Filter</h4>
+                        <p>Cari buku, filter by size, sort otomatis</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📱 Responsive Design</h4>
+                        <p>Works perfectly di desktop, tablet, mobile</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⬇️ Direct Download</h4>
+                        <p>Download PDF langsung dari browser</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Statistics</h4>
+                        <p>Total books, size, collection breakdown</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🚀 No Backend</h4>
+                        <p>100% static - cepat dan aman</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Start -->
+            <section>
+                <h2>⚡ Quick Start (5 Menit)</h2>
+                
+                <div class="step-box">
+                    <span class="step-number">1</span>
+                    <strong>Generate Manifest</strong>
+                    <pre>python3 generate_books_manifest.py</pre>
+                </div>
+
+                <div class="step-box">
+                    <span class="step-number">2</span>
+                    <strong>Test Locally</strong>
+                    <pre>python3 web-server-static.py
+# Buka: http://localhost:8000/index-github-pages.html</pre>
+                </div>
+
+                <div class="step-box">
+                    <span class="step-number">3</span>
+                    <strong>Deploy ke GitHub</strong>
+                    <pre>chmod +x deploy-to-github-pages.sh
+./deploy-to-github-pages.sh YOUR_USERNAME</pre>
+                </div>
+
+                <div class="success">
+                    ✅ Website live di: <code>https://YOUR_USERNAME.github.io/ebooks/</code>
+                </div>
+            </section>
+
+            <!-- Files Structure -->
+            <section>
+                <h2>📁 File Structure</h2>
+                
+                <p>Static website menggunakan file-file berikut:</p>
+                
+                <div class="file-tree">
+├── index-github-pages.html      # Main website (rename ke index.html)
+├── books_data.js                # Book catalog data (generated)
+├── books_manifest.json          # Book metadata (generated)
+├── EBOOKS/                      # PDF directory 1 (41 files)
+├── pengetahuan/                 # PDF directory 2 (83 files)
+└── deploy-to-github-pages.sh    # Deploy script
+                </div>
+
+                <p style="margin-top: 15px; font-size: 13px; color: #666;">
+                    <strong>Size:</strong> ~930 MB total (includes all PDFs)<br>
+                    <strong>Speed:</strong> Very fast - GitHub Pages CDN<br>
+                    <strong>No backend:</strong> 100% client-side rendering
+                </p>
+            </section>
+
+            <!-- Setup Details -->
+            <section>
+                <h2>🔧 Detailed Setup</h2>
+
+                <h3>Prerequisites</h3>
+                <ul style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>GitHub account dengan public repository</li>
+                    <li>Git installed dan configured</li>
+                    <li>Python 3.x installed</li>
+                </ul>
+
+                <h3>Step 1: Setup GitHub Repository</h3>
+                <pre>cd /workspaces/ebooks
+git init
+git add .
+git commit -m "Initial commit with static website"
+git remote add origin https://github.com/YOUR_USERNAME/ebooks.git
+git branch -M main
+git push -u origin main</pre>
+
+                <h3>Step 2: Enable GitHub Pages</h3>
+                <ol style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Go to GitHub repository</li>
+                    <li>Settings → Pages</li>
+                    <li>Source: Select "Deploy from a branch"</li>
+                    <li>Branch: Select "main" and "/ (root)"</li>
+                    <li>Click "Save"</li>
+                </ol>
+
+                <h3>Step 3: Deploy Static Website</h3>
+                
+                <p><strong>Manual Method:</strong></p>
+                <pre># Generate manifest
+python3 generate_books_manifest.py
+
+# Test locally
+python3 -m http.server 8000
+
+# Rename file untuk GitHub Pages
+cp index-github-pages.html index.html
+
+# Commit dan push
+git add .
+git commit -m "Add static website"
+git push origin main
+
+# Wait 1-2 minutes untuk GitHub Pages build
+# Website available di: https://YOUR_USERNAME.github.io/ebooks/</pre>
+
+                <p style="margin-top: 20px;"><strong>Automated Method:</strong></p>
+                <pre># Run deployment script (recommended)
+chmod +x deploy-to-github-pages.sh
+./deploy-to-github-pages.sh YOUR_USERNAME</pre>
+
+                <div class="info">
+                    ℹ️ Script otomatis akan create gh-pages branch, copy files, dan push ke GitHub
+                </div>
+            </section>
+
+            <!-- Customization -->
+            <section>
+                <h2>🎨 Customization</h2>
+
+                <h3>Change Title & Description</h3>
+                <p>Edit <code>index-github-pages.html</code>:</p>
+                <pre>&lt;h1&gt;📚 E-Books Library&lt;/h1&gt;
+&lt;p&gt;Koleksi lengkap automotive e-book...&lt;/p&gt;</pre>
+
+                <h3>Change Color Scheme</h3>
+                <p>Find dalam CSS:</p>
+                <pre>#667eea - Primary color (blue)
+#764ba2 - Secondary color (purple)</pre>
+                <p>Replace dengan color code pilihan Anda</p>
+
+                <h3>Add Custom Domain</h3>
+                <ol style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Update DNS: Point domain ke <code>USERNAME.github.io</code></li>
+                    <li>Settings → Pages → Custom domain</li>
+                    <li>Input domain Anda</li>
+                    <li>Enable "Enforce HTTPS"</li>
+                </ol>
+            </section>
+
+            <!-- Maintenance -->
+            <section>
+                <h2>🔄 Maintenance & Updates</h2>
+
+                <h3>Add New Books</h3>
+                <ol style="margin-left: 20px; margin-bottom: 20px;">
+                    <li>Add PDF files ke EBOOKS/ atau pengetahuan/ folders</li>
+                    <li>Run: <code>python3 generate_books_manifest.py</code></li>
+                    <li>Commit dan push</li>
+                </ol>
+
+                <h3>Update Website</h3>
+                <pre># Make changes
+# Commit
+git add .
+git commit -m "Update website"
+git push origin main
+
+# GitHub Pages auto-rebuild (1-2 minutes)</pre>
+
+                <h3>Update Manifest Schedule</h3>
+                <p>Jalankan script ini setiap bulan atau saat ada changes:</p>
+                <pre>python3 generate_books_manifest.py
+git add books_data.js books_manifest.json
+git commit -m "Update books manifest"
+git push</pre>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section>
+                <h2>🐛 Troubleshooting</h2>
+
+                <h3>Website not loading?</h3>
+                <ul style="margin-left: 20px;">
+                    <li>✅ Clear browser cache (Ctrl+Shift+Delete)</li>
+                    <li>✅ Check branch is set to main/gh-pages</li>
+                    <li>✅ Verify rename index-github-pages.html → index.html</li>
+                </ul>
+
+                <h3>PDFs not downloading?</h3>
+                <ul style="margin-left: 20px;">
+                    <li>✅ Check EBOOKS/ dan pengetahuan/ folders pushed</li>
+                    <li>✅ Verify file paths in books_data.js correct</li>
+                    <li>✅ Check GitHub Pages settings</li>
+                </ul>
+
+                <h3>Slow loading?</h3>
+                <ul style="margin-left: 20px;">
+                    <li>✅ Repository size besar (normal untuk ~930MB)</li>
+                    <li>✅ GitHub Pages CDN is caching globally</li>
+                    <li>✅ First load may take 30s, subsequent loads faster</li>
+                </ul>
+
+                <div class="warning">
+                    ⚠️ <strong>Large Repository:</strong> GitHub allows 1GB per repository. 
+                    Dengan ~930MB PDFs, sudah near limit. Monitor atau upgrade ke paid plan jika perlu lebih banyak files.
+                </div>
+            </section>
+
+            <!-- Performance -->
+            <section>
+                <h2>⚡ Performance Tips</h2>
+
+                <h3>Reduce Repository Size</h3>
+                <p>Jika repository terlalu besar, gunakan Git LFS:</p>
+                <pre># Install Git LFS
+sudo apt-get install git-lfs
+
+# Track PDF files
+git lfs track "*.pdf"
+
+# Push changes
+git add .gitattributes
+git commit -m "Setup Git LFS"
+git push</pre>
+
+                <h3>Optimize PDFs</h3>
+                <p>Reduce PDF size dengan compression:</p>
+                <pre># Linux/Mac
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
+   -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH \
+   -sOutputFile=output.pdf input.pdf</pre>
+
+                <h3>Use CDN</h3>
+                <p>Untuk kecepatan lebih, deploy ke Terraform atau Cloudflare:</p>
+                <ul style="margin-left: 20px;">
+                    <li>Netlify - Free, fast deploys</li>
+                    <li>Vercel - Optimized for performance</li>
+                    <li>Cloudflare Pages - Global CDN</li>
+                </ul>
+            </section>
+
+            <!-- Next Steps -->
+            <section>
+                <h2>📝 Next Steps</h2>
+
+                <div class="step-box">
+                    <strong>✅ Immediate (Today)</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Test website locally: <code>python3 web-server-static.py</code></li>
+                        <li>Verify all files copied: <code>ls -lh</code></li>
+                        <li>Create GitHub repository</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <strong>📊 Short Term (This Week)</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Deploy to GitHub Pages</li>
+                        <li>Share link dengan team</li>
+                        <li>Collect feedback</li>
+                    </ul>
+                </div>
+
+                <div class="step-box">
+                    <strong>🚀 Long Term (This Month)</strong>
+                    <ul style="margin-top: 10px; margin-left: 20px;">
+                        <li>Setup custom domain</li>
+                        <li>Implement CI/CD for auto-deploy</li>
+                        <li>Monitor analytics</li>
+                        <li>Plan content updates</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Support -->
+            <section>
+                <h2>❓ Need Help?</h2>
+
+                <p>Check these resources:</p>
+                <ul style="margin-left: 20px;">
+                    <li><a href="https://docs.github.com/en/pages" style="color: #667eea;">GitHub Pages Documentation</a></li>
+                    <li><a href="https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-git-large-file-storage" style="color: #667eea;">Git LFS Documentation</a></li>
+                    <li>README.md - Project documentation</li>
+                    <li>GITHUB_PAGES_DEPLOY.md - Detailed deployment guide</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>📚 E-Books Management & AI Knowledge Base | Static Website Setup Guide</p>
+            <p style="font-size: 12px; margin-top: 10px;">Last Updated: February 2026</p>
+        </footer>
+    </div>
+
+    <div class="btn-group" style="max-width: 900px; margin: 30px auto;">
+        <a href="index-github-pages.html" class="btn btn-primary">🌐 View Website</a>
+        <a href="GITHUB_PAGES_DEPLOY.md" class="btn btn-secondary">📖 Full Guide</a>
+    </div>
+</body>
+</html>

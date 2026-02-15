@@ -1,0 +1,1001 @@
+const booksData ={
+ "total_books":124,
+ "total_size_mb":932.63,
+ "ebooks_count":41,
+ "pengetahuan_count":83,
+ "generated":"2026-02-15T06:55:55.469517",
+ "books":[
+{
+ "id":1,
+ "title":"ACDELCO - HYBRID & ELECTRIC VEHICLE",
+ "filename":"ACDELCO - HYBRID & ELECTRIC VEHICLE.pdf",
+ "size_mb":6.96,
+ "source":"EBOOKS",
+ "path":"EBOOKS/ACDELCO - HYBRID & ELECTRIC VEHICLE.pdf"
+},
+{
+ "id":2,
+ "title":"ADAS MA600 Calibration Toolset User Manual",
+ "filename":"ADAS MA600 Calibration Toolset User Manual.pdf",
+ "size_mb":1.39,
+ "source":"EBOOKS",
+ "path":"EBOOKS/ADAS MA600 Calibration Toolset User Manual.pdf"
+},
+{
+ "id":3,
+ "title":"ADAS_Calibration",
+ "filename":"ADAS_Calibration.pdf",
+ "size_mb":3.45,
+ "source":"EBOOKS",
+ "path":"EBOOKS/ADAS_Calibration.pdf"
+},
+{
+ "id":4,
+ "title":"AUTOMOTIVE CONTROL SYSTEMS",
+ "filename":"AUTOMOTIVE CONTROL SYSTEMS.pdf",
+ "size_mb":6.48,
+ "source":"EBOOKS",
+ "path":"EBOOKS/AUTOMOTIVE CONTROL SYSTEMS.pdf"
+},
+{
+ "id":5,
+ "title":"Advanced Driver Assistance Systems (ADAS) Specialist Test",
+ "filename":"Advanced Driver Assistance Systems (ADAS) Specialist Test.pdf",
+ "size_mb":1.33,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Advanced Driver Assistance Systems (ADAS) Specialist Test.pdf"
+},
+{
+ "id":6,
+ "title":"Advanced battery management technologies for electric vehicles 2019",
+ "filename":"Advanced battery management technologies for electric vehicles 2019.pdf",
+ "size_mb":15.94,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Advanced battery management technologies for electric vehicles 2019.pdf"
+},
+{
+ "id":7,
+ "title":"Automobile Electrical and Electronic Systems 5th Edition by Tom Denton",
+ "filename":"Automobile Electrical and Electronic Systems 5th Edition by Tom Denton.pdf",
+ "size_mb":49.23,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Automobile Electrical and Electronic Systems 5th Edition by Tom Denton.pdf"
+},
+{
+ "id":8,
+ "title":"Automotive Air-conditioning and Climate Control Systems by Steven Daly",
+ "filename":"Automotive Air-conditioning and Climate Control Systems by Steven Daly.pdf",
+ "size_mb":7.63,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Automotive Air-conditioning and Climate Control Systems by Steven Daly.pdf"
+},
+{
+ "id":9,
+ "title":"Automotive Sensors Bosch",
+ "filename":"Automotive Sensors Bosch.pdf",
+ "size_mb":3.62,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Automotive Sensors Bosch.pdf"
+},
+{
+ "id":10,
+ "title":"Automotive-ECU-architecture-and-logic",
+ "filename":"Automotive-ECU-architecture-and-logic.pdf",
+ "size_mb":7.58,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Automotive-ECU-architecture-and-logic.pdf"
+},
+{
+ "id":11,
+ "title":"Bosch Automotive Electrics and Automotive Electronics",
+ "filename":"Bosch Automotive Electrics and Automotive Electronics.pdf",
+ "size_mb":7.78,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Bosch Automotive Electrics and Automotive Electronics.pdf"
+},
+{
+ "id":12,
+ "title":"Bosch Automotive Networking,Driving Stability Systems,Electronics",
+ "filename":"Bosch Automotive Networking,Driving Stability Systems,Electronics.pdf",
+ "size_mb":11.88,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Bosch Automotive Networking,Driving Stability Systems,Electronics.pdf"
+},
+{
+ "id":13,
+ "title":"Bosch Diesel Engine Management Systems and Components",
+ "filename":"Bosch Diesel Engine Management Systems and Components.pdf",
+ "size_mb":12.99,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Bosch Diesel Engine Management Systems and Components.pdf"
+},
+{
+ "id":14,
+ "title":"Bosch Electronic Diesel Control (EDC) Edition 2001",
+ "filename":"Bosch Electronic Diesel Control (EDC) Edition 2001.pdf",
+ "size_mb":1.7,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Bosch Electronic Diesel Control (EDC) Edition 2001.pdf"
+},
+{
+ "id":15,
+ "title":"CANopenTechnical Manual",
+ "filename":"CANopenTechnical Manual.pdf",
+ "size_mb":8.17,
+ "source":"EBOOKS",
+ "path":"EBOOKS/CANopenTechnical Manual.pdf"
+},
+{
+ "id":16,
+ "title":"DENSO Engine-Management-System-Catalogue",
+ "filename":"DENSO Engine-Management-System-Catalogue.pdf",
+ "size_mb":3.17,
+ "source":"EBOOKS",
+ "path":"EBOOKS/DENSO Engine-Management-System-Catalogue.pdf"
+},
+{
+ "id":17,
+ "title":"Denso aircond catalogue-2020",
+ "filename":"Denso aircond catalogue-2020.pdf",
+ "size_mb":19.6,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Denso aircond catalogue-2020.pdf"
+},
+{
+ "id":18,
+ "title":"Denso-RV-HVAC-Service-Manual",
+ "filename":"Denso-RV-HVAC-Service-Manual.pdf",
+ "size_mb":2.5,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Denso-RV-HVAC-Service-Manual.pdf"
+},
+{
+ "id":19,
+ "title":"Diagnosing Keys & Immobilizer Systems",
+ "filename":"Diagnosing Keys & Immobilizer Systems.pdf",
+ "size_mb":16.66,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Diagnosing Keys & Immobilizer Systems.pdf"
+},
+{
+ "id":20,
+ "title":"Ecu Modules Repair Ebook",
+ "filename":"Ecu Modules Repair Ebook.pdf",
+ "size_mb":11.17,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Ecu Modules Repair Ebook.pdf"
+},
+{
+ "id":21,
+ "title":"Electric and Hybrid Electric Vehicles (1st Edition) 2022",
+ "filename":"Electric and Hybrid Electric Vehicles (1st Edition) 2022.pdf",
+ "size_mb":94.16,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Electric and Hybrid Electric Vehicles (1st Edition) 2022.pdf"
+},
+{
+ "id":22,
+ "title":"Electric and Hybrid Vehicles (3rd Edition) 2024",
+ "filename":"Electric and Hybrid Vehicles (3rd Edition) 2024.pdf",
+ "size_mb":68.36,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Electric and Hybrid Vehicles (3rd Edition) 2024.pdf"
+},
+{
+ "id":23,
+ "title":"Engine Misfire and Fuel Trim Analysis Techniques",
+ "filename":"Engine Misfire and Fuel Trim Analysis Techniques.pdf",
+ "size_mb":33.52,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Engine Misfire and Fuel Trim Analysis Techniques.pdf"
+},
+{
+ "id":24,
+ "title":"Engine-Management-Systems-Product-Information-Catalogue",
+ "filename":"Engine-Management-Systems-Product-Information-Catalogue.pdf",
+ "size_mb":3.17,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Engine-Management-Systems-Product-Information-Catalogue.pdf"
+},
+{
+ "id":25,
+ "title":"Gasoline_Engine_Management_Systems_and_Components",
+ "filename":"Gasoline_Engine_Management_Systems_and_Components.pdf",
+ "size_mb":10.56,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Gasoline_Engine_Management_Systems_and_Components.pdf"
+},
+{
+ "id":26,
+ "title":"Hybrid and Electric Vehicles",
+ "filename":"Hybrid and Electric Vehicles.pdf",
+ "size_mb":5.25,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Hybrid and Electric Vehicles.pdf"
+},
+{
+ "id":27,
+ "title":"ISUZU SERVICE TRAINING",
+ "filename":"ISUZU SERVICE TRAINING.pdf",
+ "size_mb":9.62,
+ "source":"EBOOKS",
+ "path":"EBOOKS/ISUZU SERVICE TRAINING.pdf"
+},
+{
+ "id":28,
+ "title":"Introduction to ADAS",
+ "filename":"Introduction to ADAS.pdf",
+ "size_mb":1.84,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Introduction to ADAS.pdf"
+},
+{
+ "id":29,
+ "title":"Kia Automotive Electrical Diagnosis Course",
+ "filename":"Kia Automotive Electrical Diagnosis Course.pdf",
+ "size_mb":16.53,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Kia Automotive Electrical Diagnosis Course.pdf"
+},
+{
+ "id":30,
+ "title":"MPX (multiplex communication) System ",
+ "filename":"MPX (multiplex communication) System .pdf",
+ "size_mb":3.21,
+ "source":"EBOOKS",
+ "path":"EBOOKS/MPX (multiplex communication) System .pdf"
+},
+{
+ "id":31,
+ "title":"Materi CR-V Hybrid",
+ "filename":"Materi CR-V Hybrid.pdf",
+ "size_mb":9.71,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Materi CR-V Hybrid.pdf"
+},
+{
+ "id":32,
+ "title":"Materi Training Electronic Fuel Injection-Engine Management",
+ "filename":"Materi Training Electronic Fuel Injection-Engine Management.pdf",
+ "size_mb":4.24,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Materi Training Electronic Fuel Injection-Engine Management.pdf"
+},
+{
+ "id":33,
+ "title":"Mitsubishi Engine 4m40 Repair Manual",
+ "filename":"Mitsubishi Engine 4m40 Repair Manual.pdf",
+ "size_mb":8.6,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Mitsubishi Engine 4m40 Repair Manual.pdf"
+},
+{
+ "id":34,
+ "title":"Modern Automotive Technology 7th",
+ "filename":"Modern Automotive Technology 7th.pdf",
+ "size_mb":38.45,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Modern Automotive Technology 7th.pdf"
+},
+{
+ "id":35,
+ "title":"Modern Car Handbook 2020",
+ "filename":"Modern Car Handbook 2020.pdf",
+ "size_mb":6.41,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Modern Car Handbook 2020.pdf"
+},
+{
+ "id":36,
+ "title":"Service Diagnosis and Measurement Manual SAIC Motor",
+ "filename":"Service Diagnosis and Measurement Manual SAIC Motor.pdf",
+ "size_mb":18.73,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Service Diagnosis and Measurement Manual SAIC Motor.pdf"
+},
+{
+ "id":37,
+ "title":"TROUBLESHOOTING AUTOMOTIVE COMPUTER",
+ "filename":"TROUBLESHOOTING AUTOMOTIVE COMPUTER.pdf",
+ "size_mb":2.04,
+ "source":"EBOOKS",
+ "path":"EBOOKS/TROUBLESHOOTING AUTOMOTIVE COMPUTER.pdf"
+},
+{
+ "id":38,
+ "title":"Toyota Hybrid System (THS) 1 & 2 Operation",
+ "filename":"Toyota Hybrid System (THS) 1 & 2 Operation.pdf",
+ "size_mb":0.86,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Toyota Hybrid System (THS) 1 & 2 Operation.pdf"
+},
+{
+ "id":39,
+ "title":"Toyota Hybrid System Training Manual",
+ "filename":"Toyota Hybrid System Training Manual.pdf",
+ "size_mb":19.05,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Toyota Hybrid System Training Manual.pdf"
+},
+{
+ "id":40,
+ "title":"Troubleshooting Automotive Computer Systems",
+ "filename":"Troubleshooting Automotive Computer Systems.pdf",
+ "size_mb":2.25,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Troubleshooting Automotive Computer Systems.pdf"
+},
+{
+ "id":41,
+ "title":"Understanding Automotive Electronics",
+ "filename":"Understanding Automotive Electronics.pdf",
+ "size_mb":16.79,
+ "source":"EBOOKS",
+ "path":"EBOOKS/Understanding Automotive Electronics.pdf"
+},
+{
+ "id":42,
+ "title":"Automotive Electronic",
+ "filename":"Automotive Electronic.pdf",
+ "size_mb":2.78,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Automotive Electronic.pdf"
+},
+{
+ "id":43,
+ "title":"CAN BUS & LIN BUS education board",
+ "filename":"CAN BUS & LIN BUS education board.pdf",
+ "size_mb":1.52,
+ "source":"pengetahuan",
+ "path":"pengetahuan/CAN BUS & LIN BUS education board.pdf"
+},
+{
+ "id":44,
+ "title":"CAN-Training",
+ "filename":"CAN-Training.pdf",
+ "size_mb":0.29,
+ "source":"pengetahuan",
+ "path":"pengetahuan/CAN-Training.pdf"
+},
+{
+ "id":45,
+ "title":"CAN_BUS_Ranger-Everest",
+ "filename":"CAN_BUS_Ranger-Everest.pdf",
+ "size_mb":0.6,
+ "source":"pengetahuan",
+ "path":"pengetahuan/CAN_BUS_Ranger-Everest.pdf"
+},
+{
+ "id":46,
+ "title":"CAN_bus_diagnostics",
+ "filename":"CAN_bus_diagnostics.pdf",
+ "size_mb":0.44,
+ "source":"pengetahuan",
+ "path":"pengetahuan/CAN_bus_diagnostics.pdf"
+},
+{
+ "id":47,
+ "title":"CARA MEMBACA WIRRING DIAGRAM STANDARD ISO",
+ "filename":"CARA MEMBACA WIRRING DIAGRAM STANDARD ISO.pdf",
+ "size_mb":0.9,
+ "source":"pengetahuan",
+ "path":"pengetahuan/CARA MEMBACA WIRRING DIAGRAM STANDARD ISO.pdf"
+},
+{
+ "id":48,
+ "title":"Cars-LCV Ecu Type List",
+ "filename":"Cars-LCV Ecu Type List.pdf",
+ "size_mb":1.0,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Cars-LCV Ecu Type List.pdf"
+},
+{
+ "id":49,
+ "title":"Connector Pinout North America,Europe and Asia OBD Pinouts",
+ "filename":"Connector Pinout North America,Europe and Asia OBD Pinouts.pdf",
+ "size_mb":0.92,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Connector Pinout North America,Europe and Asia OBD Pinouts.pdf"
+},
+{
+ "id":50,
+ "title":"DTC U0100 - External Communication Fault",
+ "filename":"DTC U0100 - External Communication Fault.pdf",
+ "size_mb":0.2,
+ "source":"pengetahuan",
+ "path":"pengetahuan/DTC U0100 - External Communication Fault.pdf"
+},
+{
+ "id":51,
+ "title":"DTCList_MD1 canter",
+ "filename":"DTCList_MD1 canter.pdf",
+ "size_mb":1.12,
+ "source":"pengetahuan",
+ "path":"pengetahuan/DTCList_MD1 canter.pdf"
+},
+{
+ "id":52,
+ "title":"Daihatsu Installs the eSMART HYBRID",
+ "filename":"Daihatsu Installs the eSMART HYBRID.pdf",
+ "size_mb":0.51,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Daihatsu Installs the eSMART HYBRID.pdf"
+},
+{
+ "id":53,
+ "title":"Data Parameters or Stream",
+ "filename":"Data Parameters or Stream.pdf",
+ "size_mb":0.17,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Data Parameters or Stream.pdf"
+},
+{
+ "id":54,
+ "title":"Diesel Injection Pump HINO Dutro - TOYOTA Dyna (N04C-T)",
+ "filename":"Diesel Injection Pump HINO Dutro - TOYOTA Dyna (N04C-T).pdf",
+ "size_mb":1.02,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Diesel Injection Pump HINO Dutro - TOYOTA Dyna (N04C-T).pdf"
+},
+{
+ "id":55,
+ "title":"EMERGENCY RESPONSE GUIDE RENAULT GROUP",
+ "filename":"EMERGENCY RESPONSE GUIDE RENAULT GROUP.pdf",
+ "size_mb":1.48,
+ "source":"pengetahuan",
+ "path":"pengetahuan/EMERGENCY RESPONSE GUIDE RENAULT GROUP.pdf"
+},
+{
+ "id":56,
+ "title":"EPS HONDA FIT",
+ "filename":"EPS HONDA FIT.pdf",
+ "size_mb":8.52,
+ "source":"pengetahuan",
+ "path":"pengetahuan/EPS HONDA FIT.pdf"
+},
+{
+ "id":57,
+ "title":"ETACS Functionality Development for the OUTLANDER",
+ "filename":"ETACS Functionality Development for the OUTLANDER.pdf",
+ "size_mb":1.3,
+ "source":"pengetahuan",
+ "path":"pengetahuan/ETACS Functionality Development for the OUTLANDER.pdf"
+},
+{
+ "id":58,
+ "title":"Emergency Response Guide 2025 CR-V eFCEV",
+ "filename":"Emergency Response Guide 2025 CR-V eFCEV.pdf",
+ "size_mb":5.47,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Emergency Response Guide 2025 CR-V eFCEV.pdf"
+},
+{
+ "id":59,
+ "title":"Emergency Response Guide 2025 Civic Hybrid",
+ "filename":"Emergency Response Guide 2025 Civic Hybrid.pdf",
+ "size_mb":6.28,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Emergency Response Guide 2025 Civic Hybrid.pdf"
+},
+{
+ "id":60,
+ "title":"Emergency Response Guide 2025-NISSAN-LEAF",
+ "filename":"Emergency Response Guide 2025-NISSAN-LEAF.pdf",
+ "size_mb":3.23,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Emergency Response Guide 2025-NISSAN-LEAF.pdf"
+},
+{
+ "id":61,
+ "title":"Emergency Response Quick Guide_2022 - 2024 Corolla HV",
+ "filename":"Emergency Response Quick Guide_2022 - 2024 Corolla HV.pdf",
+ "size_mb":3.71,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Emergency Response Quick Guide_2022 - 2024 Corolla HV.pdf"
+},
+{
+ "id":62,
+ "title":"Emergency Response Quick Reference_2023-2024 Corolla Cross HV",
+ "filename":"Emergency Response Quick Reference_2023-2024 Corolla Cross HV.pdf",
+ "size_mb":1.26,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Emergency Response Quick Reference_2023-2024 Corolla Cross HV.pdf"
+},
+{
+ "id":63,
+ "title":"FE series FE6,FE6T & FE6TA",
+ "filename":"FE series FE6,FE6T & FE6TA.pdf",
+ "size_mb":0.9,
+ "source":"pengetahuan",
+ "path":"pengetahuan/FE series FE6,FE6T & FE6TA.pdf"
+},
+{
+ "id":64,
+ "title":"For Dismantlers GRAND VITARA",
+ "filename":"For Dismantlers GRAND VITARA.pdf",
+ "size_mb":3.36,
+ "source":"pengetahuan",
+ "path":"pengetahuan/For Dismantlers GRAND VITARA.pdf"
+},
+{
+ "id":65,
+ "title":"For DismantlersVITARAS-CROSS",
+ "filename":"For DismantlersVITARAS-CROSS.pdf",
+ "size_mb":1.5,
+ "source":"pengetahuan",
+ "path":"pengetahuan/For DismantlersVITARAS-CROSS.pdf"
+},
+{
+ "id":66,
+ "title":"Ford 2020 - 2023 MY OBD System Operation",
+ "filename":"Ford 2020 - 2023 MY OBD System Operation.pdf",
+ "size_mb":0.71,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Ford 2020 - 2023 MY OBD System Operation.pdf"
+},
+{
+ "id":67,
+ "title":"HONDA AIMING DRIVING SUPPORT SYSTEMS",
+ "filename":"HONDA AIMING DRIVING SUPPORT SYSTEMS.pdf",
+ "size_mb":1.1,
+ "source":"pengetahuan",
+ "path":"pengetahuan/HONDA AIMING DRIVING SUPPORT SYSTEMS.pdf"
+},
+{
+ "id":68,
+ "title":"HONDA DUAL MODE CHARGING SYSTEM",
+ "filename":"HONDA DUAL MODE CHARGING SYSTEM.pdf",
+ "size_mb":0.73,
+ "source":"pengetahuan",
+ "path":"pengetahuan/HONDA DUAL MODE CHARGING SYSTEM.pdf"
+},
+{
+ "id":69,
+ "title":"HYBRID CONTROL SYSTEM",
+ "filename":"HYBRID CONTROL SYSTEM.pdf",
+ "size_mb":9.27,
+ "source":"pengetahuan",
+ "path":"pengetahuan/HYBRID CONTROL SYSTEM.pdf"
+},
+{
+ "id":70,
+ "title":"Honda CVT\u2008Manual (AAMCO)",
+ "filename":"Honda CVT\u2008Manual (AAMCO).pdf",
+ "size_mb":6.71,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Honda CVT\u2008Manual (AAMCO).pdf"
+},
+{
+ "id":71,
+ "title":"How To find Toyota Ignition System Faults Fast",
+ "filename":"How To find Toyota Ignition System Faults Fast.pdf",
+ "size_mb":4.96,
+ "source":"pengetahuan",
+ "path":"pengetahuan/How To find Toyota Ignition System Faults Fast.pdf"
+},
+{
+ "id":72,
+ "title":"Hybrid Vehicle Systems Panel Trainer_LJCreate",
+ "filename":"Hybrid Vehicle Systems Panel Trainer_LJCreate.pdf",
+ "size_mb":0.14,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Hybrid Vehicle Systems Panel Trainer_LJCreate.pdf"
+},
+{
+ "id":73,
+ "title":"Hyundai Emergency Response Guide - KONA Electric",
+ "filename":"Hyundai Emergency Response Guide - KONA Electric.pdf",
+ "size_mb":3.1,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Hyundai Emergency Response Guide - KONA Electric.pdf"
+},
+{
+ "id":74,
+ "title":"Hyundai Ioniq HEVEmergency Response Guide ",
+ "filename":"Hyundai Ioniq HEVEmergency Response Guide .pdf",
+ "size_mb":2.09,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Hyundai Ioniq HEVEmergency Response Guide .pdf"
+},
+{
+ "id":75,
+ "title":"IDENTIFYING CALIBRATION CODES ON COMMON RAIL",
+ "filename":"IDENTIFYING CALIBRATION CODES ON COMMON RAIL.pdf",
+ "size_mb":0.19,
+ "source":"pengetahuan",
+ "path":"pengetahuan/IDENTIFYING CALIBRATION CODES ON COMMON RAIL.pdf"
+},
+{
+ "id":76,
+ "title":"IMMOBILISER SYSTEM (KEY REGISTRATION) CALYA",
+ "filename":"IMMOBILISER SYSTEM (KEY REGISTRATION) CALYA.pdf",
+ "size_mb":0.45,
+ "source":"pengetahuan",
+ "path":"pengetahuan/IMMOBILISER SYSTEM (KEY REGISTRATION) CALYA.pdf"
+},
+{
+ "id":77,
+ "title":"IMMOBILISER SYSTEM (KEY REGISTRATION)",
+ "filename":"IMMOBILISER SYSTEM (KEY REGISTRATION).pdf",
+ "size_mb":0.17,
+ "source":"pengetahuan",
+ "path":"pengetahuan/IMMOBILISER SYSTEM (KEY REGISTRATION).pdf"
+},
+{
+ "id":78,
+ "title":"IONIQ5-NE-EV-Emergency-Response-Guide_Aust_Final-2021",
+ "filename":"IONIQ5-NE-EV-Emergency-Response-Guide_Aust_Final-2021.pdf",
+ "size_mb":1.96,
+ "source":"pengetahuan",
+ "path":"pengetahuan/IONIQ5-NE-EV-Emergency-Response-Guide_Aust_Final-2021.pdf"
+},
+{
+ "id":79,
+ "title":"Ignition Coils all Brands",
+ "filename":"Ignition Coils all Brands.pdf",
+ "size_mb":38.24,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Ignition Coils all Brands.pdf"
+},
+{
+ "id":80,
+ "title":"KEY FREE SCHEMATIC (STOP START BUTTON) RUSH-TERIOS",
+ "filename":"KEY FREE SCHEMATIC (STOP START BUTTON) RUSH-TERIOS.pdf",
+ "size_mb":0.17,
+ "source":"pengetahuan",
+ "path":"pengetahuan/KEY FREE SCHEMATIC (STOP START BUTTON) RUSH-TERIOS.pdf"
+},
+{
+ "id":81,
+ "title":"KONA HybridEmergency Response Guide",
+ "filename":"KONA HybridEmergency Response Guide.pdf",
+ "size_mb":3.81,
+ "source":"pengetahuan",
+ "path":"pengetahuan/KONA HybridEmergency Response Guide.pdf"
+},
+{
+ "id":82,
+ "title":"Kerusakan ECU mitsubishi colt T120SS",
+ "filename":"Kerusakan ECU mitsubishi colt T120SS.pdf",
+ "size_mb":0.23,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Kerusakan ECU mitsubishi colt T120SS.pdf"
+},
+{
+ "id":83,
+ "title":"Kontrol Injeksi Bahan Bakar dan Pemutus Bahan Bakar",
+ "filename":"Kontrol Injeksi Bahan Bakar dan Pemutus Bahan Bakar.pdf",
+ "size_mb":0.49,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Kontrol Injeksi Bahan Bakar dan Pemutus Bahan Bakar.pdf"
+},
+{
+ "id":84,
+ "title":"LIST Automatic Transmission",
+ "filename":"LIST Automatic Transmission.pdf",
+ "size_mb":16.9,
+ "source":"pengetahuan",
+ "path":"pengetahuan/LIST Automatic Transmission.pdf"
+},
+{
+ "id":85,
+ "title":"MATIC [A4Q-D1]terios",
+ "filename":"MATIC [A4Q-D1]terios.pdf",
+ "size_mb":1.83,
+ "source":"pengetahuan",
+ "path":"pengetahuan/MATIC [A4Q-D1]terios.pdf"
+},
+{
+ "id":86,
+ "title":"MULTIPLEX COMMUNICATION SYSTEM AYLA",
+ "filename":"MULTIPLEX COMMUNICATION SYSTEM AYLA.pdf",
+ "size_mb":0.77,
+ "source":"pengetahuan",
+ "path":"pengetahuan/MULTIPLEX COMMUNICATION SYSTEM AYLA.pdf"
+},
+{
+ "id":87,
+ "title":"Manual All Toyota Wiring Diagram and Ecu Pinout",
+ "filename":"Manual All Toyota Wiring Diagram and Ecu Pinout.pdf",
+ "size_mb":127.75,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Manual All Toyota Wiring Diagram and Ecu Pinout.pdf"
+},
+{
+ "id":88,
+ "title":"Materi Training Honda Step WGN",
+ "filename":"Materi Training Honda Step WGN.pdf",
+ "size_mb":3.11,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Materi Training Honda Step WGN.pdf"
+},
+{
+ "id":89,
+ "title":"Materi Training Honda eN1",
+ "filename":"Materi Training Honda eN1.pdf",
+ "size_mb":4.04,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Materi Training Honda eN1.pdf"
+},
+{
+ "id":90,
+ "title":"Membaca & Memahami Data OBD II",
+ "filename":"Membaca & Memahami Data OBD II.pdf",
+ "size_mb":0.23,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Membaca & Memahami Data OBD II.pdf"
+},
+{
+ "id":91,
+ "title":"Mild Hybrid System and Micro Hybrid System",
+ "filename":"Mild Hybrid System and Micro Hybrid System.pdf",
+ "size_mb":0.62,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Mild Hybrid System and Micro Hybrid System.pdf"
+},
+{
+ "id":92,
+ "title":"Mode kerja ECU ECM ",
+ "filename":"Mode kerja ECU ECM .pdf",
+ "size_mb":0.07,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Mode kerja ECU ECM .pdf"
+},
+{
+ "id":93,
+ "title":"OBD System Operation",
+ "filename":"OBD System Operation.pdf",
+ "size_mb":0.71,
+ "source":"pengetahuan",
+ "path":"pengetahuan/OBD System Operation.pdf"
+},
+{
+ "id":94,
+ "title":"PANDUAN FITUR,TROUBLESHOOTING,WIRING & REGISTER REMOTE CONTROL Grand Livina SV",
+ "filename":"PANDUAN FITUR,TROUBLESHOOTING,WIRING & REGISTER REMOTE CONTROL Grand Livina SV.pdf",
+ "size_mb":0.74,
+ "source":"pengetahuan",
+ "path":"pengetahuan/PANDUAN FITUR,TROUBLESHOOTING,WIRING & REGISTER REMOTE CONTROL Grand Livina SV.pdf"
+},
+{
+ "id":95,
+ "title":"Power Sliding Doors Honda Odyssey",
+ "filename":"Power Sliding Doors Honda Odyssey.pdf",
+ "size_mb":2.2,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Power Sliding Doors Honda Odyssey.pdf"
+},
+{
+ "id":96,
+ "title":"SWIFT SPORT SHVS Mild Hybrid System",
+ "filename":"SWIFT SPORT SHVS Mild Hybrid System.pdf",
+ "size_mb":0.82,
+ "source":"pengetahuan",
+ "path":"pengetahuan/SWIFT SPORT SHVS Mild Hybrid System.pdf"
+},
+{
+ "id":97,
+ "title":"SWIFT SPORT Dismantling Manual",
+ "filename":"SWIFT SPORT Dismantling Manual.pdf",
+ "size_mb":0.82,
+ "source":"pengetahuan",
+ "path":"pengetahuan/SWIFT SPORT Dismantling Manual.pdf"
+},
+{
+ "id":98,
+ "title":"Service Manual Toyota 2NR-FE",
+ "filename":"Service Manual Toyota 2NR-FE.pdf",
+ "size_mb":9.83,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Service Manual Toyota 2NR-FE.pdf"
+},
+{
+ "id":99,
+ "title":"SmartChargingSystem_Guide",
+ "filename":"SmartChargingSystem_Guide.pdf",
+ "size_mb":3.48,
+ "source":"pengetahuan",
+ "path":"pengetahuan/SmartChargingSystem_Guide.pdf"
+},
+{
+ "id":100,
+ "title":"Spark Plug & Diesel Glow Plug CATALOGUE 2017-18",
+ "filename":"Spark Plug & Diesel Glow Plug CATALOGUE 2017-18.pdf",
+ "size_mb":5.45,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Spark Plug & Diesel Glow Plug CATALOGUE 2017-18.pdf"
+},
+{
+ "id":101,
+ "title":"Stability of LiFePO4 in Water ",
+ "filename":"Stability of LiFePO4 in Water .pdf",
+ "size_mb":0.32,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Stability of LiFePO4 in Water .pdf"
+},
+{
+ "id":102,
+ "title":"TOYOTA ENGINE IMMOBILISER SYSTEM",
+ "filename":"TOYOTA ENGINE IMMOBILISER SYSTEM.pdf",
+ "size_mb":1.21,
+ "source":"pengetahuan",
+ "path":"pengetahuan/TOYOTA ENGINE IMMOBILISER SYSTEM.pdf"
+},
+{
+ "id":103,
+ "title":"TOYOTA HYBRID CONTROL SYSTEM",
+ "filename":"TOYOTA HYBRID CONTROL SYSTEM.pdf",
+ "size_mb":9.25,
+ "source":"pengetahuan",
+ "path":"pengetahuan/TOYOTA HYBRID CONTROL SYSTEM.pdf"
+},
+{
+ "id":104,
+ "title":"TOYOTA SAFETY SENSE 2.5 & 2.5+",
+ "filename":"TOYOTA SAFETY SENSE 2.5 & 2.5+.pdf",
+ "size_mb":0.56,
+ "source":"pengetahuan",
+ "path":"pengetahuan/TOYOTA SAFETY SENSE 2.5 & 2.5+.pdf"
+},
+{
+ "id":105,
+ "title":"TOYOTA SAFETY SENSE",
+ "filename":"TOYOTA SAFETY SENSE.pdf",
+ "size_mb":0.17,
+ "source":"pengetahuan",
+ "path":"pengetahuan/TOYOTA SAFETY SENSE.pdf"
+},
+{
+ "id":106,
+ "title":"TROUBLESHOOTING SUZUKI CARRY FUTURA 1.5 G15A",
+ "filename":"TROUBLESHOOTING SUZUKI CARRY FUTURA 1.5 G15A.pdf",
+ "size_mb":2.44,
+ "source":"pengetahuan",
+ "path":"pengetahuan/TROUBLESHOOTING SUZUKI CARRY FUTURA 1.5 G15A.pdf"
+},
+{
+ "id":107,
+ "title":"Table DTC (Hex) Root Description Failure",
+ "filename":"Table DTC (Hex) Root Description Failure.pdf",
+ "size_mb":0.99,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Table DTC (Hex) Root Description Failure.pdf"
+},
+{
+ "id":108,
+ "title":"Table of Applicable ECU",
+ "filename":"Table of Applicable ECU.pdf",
+ "size_mb":1.38,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Table of Applicable ECU.pdf"
+},
+{
+ "id":109,
+ "title":"Toyota 3S-FE 3S-GE Electrical Wiring Diagrams",
+ "filename":"Toyota 3S-FE 3S-GE Electrical Wiring Diagrams.pdf",
+ "size_mb":3.25,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Toyota 3S-FE 3S-GE Electrical Wiring Diagrams.pdf"
+},
+{
+ "id":110,
+ "title":"Toyota Corolla 1.6,4A-FE,4AFE,diagrama de la ECU,ECU pinout",
+ "filename":"Toyota Corolla 1.6,4A-FE,4AFE,diagrama de la ECU,ECU pinout.pdf",
+ "size_mb":0.04,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Toyota Corolla 1.6,4A-FE,4AFE,diagrama de la ECU,ECU pinout.pdf"
+},
+{
+ "id":111,
+ "title":"Toyota Course;Idle air control system",
+ "filename":"Toyota Course;Idle air control system.pdf",
+ "size_mb":1.03,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Toyota Course;Idle air control system.pdf"
+},
+{
+ "id":112,
+ "title":"Toyota Hilux HV T ERG 103 D",
+ "filename":"Toyota Hilux HV T ERG 103 D.pdf",
+ "size_mb":2.51,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Toyota Hilux HV T ERG 103 D.pdf"
+},
+{
+ "id":113,
+ "title":"Toyota Smart Entry & Start System",
+ "filename":"Toyota Smart Entry & Start System.pdf",
+ "size_mb":4.24,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Toyota Smart Entry & Start System.pdf"
+},
+{
+ "id":114,
+ "title":"Transponder and Remote Controls Programming Manually",
+ "filename":"Transponder and Remote Controls Programming Manually.pdf",
+ "size_mb":2.18,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Transponder and Remote Controls Programming Manually.pdf"
+},
+{
+ "id":115,
+ "title":"Understanding the Toyota Hybrid Braking System",
+ "filename":"Understanding the Toyota Hybrid Braking System.pdf",
+ "size_mb":5.0,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Understanding the Toyota Hybrid Braking System.pdf"
+},
+{
+ "id":116,
+ "title":"VITARA S-CROSS Strong Hybrid System",
+ "filename":"VITARA S-CROSS Strong Hybrid System.pdf",
+ "size_mb":1.5,
+ "source":"pengetahuan",
+ "path":"pengetahuan/VITARA S-CROSS Strong Hybrid System.pdf"
+},
+{
+ "id":117,
+ "title":"Version List Engine Ecu maker & model",
+ "filename":"Version List Engine Ecu maker & model.pdf",
+ "size_mb":4.5,
+ "source":"pengetahuan",
+ "path":"pengetahuan/Version List Engine Ecu maker & model.pdf"
+},
+{
+ "id":118,
+ "title":"VolkswagenAudi Vehicle Communication Software Manual",
+ "filename":"VolkswagenAudi Vehicle Communication Software Manual.pdf",
+ "size_mb":0.87,
+ "source":"pengetahuan",
+ "path":"pengetahuan/VolkswagenAudi Vehicle Communication Software Manual.pdf"
+},
+{
+ "id":119,
+ "title":"automatic transmission A-240L-A241E-A243",
+ "filename":"automatic transmission A-240L-A241E-A243.pdf",
+ "size_mb":5.69,
+ "source":"pengetahuan",
+ "path":"pengetahuan/automatic transmission A-240L-A241E-A243.pdf"
+},
+{
+ "id":120,
+ "title":"automatic transmission Aw03-72LE",
+ "filename":"automatic transmission Aw03-72LE.pdf",
+ "size_mb":3.74,
+ "source":"pengetahuan",
+ "path":"pengetahuan/automatic transmission Aw03-72LE.pdf"
+},
+{
+ "id":121,
+ "title":"iQ EVElectric Vehicle",
+ "filename":"iQ EVElectric Vehicle.pdf",
+ "size_mb":2.13,
+ "source":"pengetahuan",
+ "path":"pengetahuan/iQ EVElectric Vehicle.pdf"
+},
+{
+ "id":122,
+ "title":"identifikasi-efi-soluna_",
+ "filename":"identifikasi-efi-soluna_.pdf",
+ "size_mb":1.83,
+ "source":"pengetahuan",
+ "path":"pengetahuan/identifikasi-efi-soluna_.pdf"
+},
+{
+ "id":123,
+ "title":"keys and Control Units Immobilizer for all brands",
+ "filename":"keys and Control Units Immobilizer for all brands.pdf",
+ "size_mb":2.67,
+ "source":"pengetahuan",
+ "path":"pengetahuan/keys and Control Units Immobilizer for all brands.pdf"
+},
+{
+ "id":124,
+ "title":"\u2018LEARNING\u2019 PADA COMMON RAIL ENGINE 4D5 DI-D",
+ "filename":"\u2018LEARNING\u2019 PADA COMMON RAIL ENGINE 4D5 DI-D.pdf",
+ "size_mb":0.18,
+ "source":"pengetahuan",
+ "path":"pengetahuan/\u2018LEARNING\u2019 PADA COMMON RAIL ENGINE 4D5 DI-D.pdf"
+}
+ ]
+};
