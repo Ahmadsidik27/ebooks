@@ -80,10 +80,14 @@
 
         /* Two-Column Layout Container */
         .main-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 20px;
+            display: flex;
+            gap: 0;
             margin-bottom: 30px;
+            height: 700px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         /* Left Column - List */
@@ -91,59 +95,45 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-        }
-
-        .search-section {
-            background: white;
+            flex: 0 0 35%;
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-bar {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .search-bar input {
-            flex: 1;
-            min-width: 250px;
-            padding: 12px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-
-        .search-bar input:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .filter-group {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .filter-group select {
-            padding: 10px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 6px;
             background: white;
-            cursor: pointer;
-            font-size: 14px;
+            border-right: 1px solid #f0f0f0;
+            overflow-y: auto;
+        }
+
+        /* Resize Divider */
+        .resize-divider {
+            flex: 0 0 4px;
+            background: linear-gradient(to right, #e0e0e0, #667eea, #e0e0e0);
+            cursor: col-resize;
+            transition: background 0.2s ease;
+            user-select: none;
+        }
+
+        .resize-divider:hover,
+        .resize-divider.dragging {
+            background: linear-gradient(to right, #667eea, #764ba2, #667eea);
+            box-shadow: 0 0 8px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Right Column - Preview */
+        .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            overflow-y: auto;
+            padding: 30px;
+            gap: 20px;
         }
 
         /* Books List Container */
         .books-list {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            max-height: 700px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            flex: 1;
             overflow-y: auto;
             border: 1px solid #f0f0f0;
         }
@@ -214,21 +204,72 @@
             color: white;
         }
 
+        /* Search & Filter */
+        .search-section {
+            background: none;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: none;
+            margin-bottom: 15px;
+        }
+
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-bar input {
+            flex: 1;
+            min-width: 0;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-group select {
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
         /* Right Column - Preview */
         .right-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
             padding: 30px;
-            height: fit-content;
-            position: sticky;
-            top: 20px;
+            gap: 20px;
         }
 
         .preview-empty {
             text-align: center;
             color: #999;
             padding: 60px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
         }
 
         .preview-empty p {
@@ -239,7 +280,8 @@
         .preview-content {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
+            height: 100%;
         }
 
         .preview-header {
@@ -248,7 +290,7 @@
             padding: 20px;
             border-radius: 8px;
             margin: -30px -30px 0 -30px;
-            padding-bottom: 20px;
+            padding: 25px 30px;
         }
 
         .preview-icon {
@@ -261,6 +303,7 @@
             font-weight: 700;
             line-height: 1.4;
             margin-bottom: 10px;
+            word-wrap: break-word;
         }
 
         .preview-source-badge {
@@ -300,6 +343,7 @@
             font-weight: 600;
             color: #333;
             word-break: break-word;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .preview-actions {
@@ -341,6 +385,57 @@
 
         .btn-copy:hover {
             background: #e0e0e0;
+        }
+
+        .file-preview-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow: hidden;
+        }
+
+        .file-preview-box {
+            flex: 1;
+            background: #f8f9ff;
+            border: 2px dashed #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            overflow: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #999;
+            text-align: center;
+        }
+
+        .file-preview-content {
+            width: 100%;
+            text-align: left;
+        }
+
+        .file-info-section {
+            background: #f0f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .file-info-title {
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        .file-info-text {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            word-wrap: break-word;
         }
 
         /* Stats Grid */
@@ -407,67 +502,54 @@
         /* Responsive Design */
         @media (max-width: 1200px) {
             .main-layout {
-                grid-template-columns: 1fr 1fr;
+                height: 600px;
             }
 
-            .detail-item {
-                grid-column: span 1;
-            }
-
-            .right-panel {
-                position: static;
-                padding: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .main-layout {
-                grid-template-columns: 1fr;
-            }
-
-            header h1 {
-                font-size: 24px;
-            }
-
-            nav {
-                gap: 10px;
-            }
-
-            .search-bar {
-                flex-direction: column;
-            }
-
-            .search-bar input {
-                width: 100%;
-            }
-
-            .book-list-item {
-                padding: 12px;
-            }
-
-            .right-panel {
-                padding: 20px;
-                position: static;
-            }
-
-            .books-list {
-                max-height: 400px;
+            .left-panel {
+                flex: 0 0 40%;
             }
 
             .preview-details {
                 grid-template-columns: 1fr;
             }
 
-            .detail-item {
-                grid-column: span 1;
+            .right-panel {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-layout {
+                flex-direction: column;
+                height: auto;
+                margin-bottom: 20px;
             }
 
-            header h1 {
-                font-size: 24px;
-            }
-
-            nav {
+            .left-panel {
+                flex: 0 0 250px;
+                border-right: none;
+                border-bottom: 1px solid #f0f0f0;
+                padding: 15px;
                 gap: 10px;
+            }
+
+            .resize-divider {
+                display: none;
+            }
+
+            .right-panel {
+                flex: 1;
+                min-height: 400px;
+                padding: 20px;
+            }
+
+            .preview-header {
+                margin: -20px -20px 0 -20px;
+                padding: 20px;
+            }
+
+            .preview-details {
+                grid-template-columns: 1fr;
             }
 
             .search-bar {
@@ -476,6 +558,46 @@
 
             .search-bar input {
                 width: 100%;
+            }
+
+            .filter-group {
+                width: 100%;
+            }
+
+            .filter-group select {
+                flex: 1;
+            }
+
+            .book-list-item {
+                padding: 12px;
+            }
+
+            .detail-item {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .left-panel {
+                flex: 0 0 200px;
+            }
+
+            .preview-title {
+                font-size: 18px;
+            }
+
+            .preview-details {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .detail-item {
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            .detail-value {
+                font-size: 13px;
             }
         }
 
@@ -570,7 +692,7 @@
         </header>
 
         <!-- Main Layout: Two Columns -->
-        <div class="main-layout">
+        <div class="main-layout" id="mainLayout">
             <!-- Left Column: List -->
             <div class="left-panel">
                 <!-- Search & Filter -->
@@ -596,10 +718,13 @@
                 </div>
             </div>
 
-            <!-- Right Column: Preview -->
+            <!-- Resize Divider -->
+            <div class="resize-divider" id="resizeDivider"></div>
+
+            <!-- Right Column: Preview/Read Area -->
             <div class="right-panel">
                 <div id="previewContainer" class="preview-empty">
-                    <p>👉 Pilih sebuah buku dari daftar di kiri untuk melihat detail lengkapnya</p>
+                    <p>👉 Pilih sebuah buku dari daftar di kiri untuk melihat detail dan preview file</p>
                 </div>
             </div>
         </div>
@@ -730,6 +855,7 @@
         function displayPreview(book) {
             const preview = document.getElementById('previewContainer');
             const fileSize = book.size_mb > 100 ? (book.size_mb / 1024).toFixed(2) + ' GB' : book.size_mb + ' MB';
+            const formattedSize = (book.size_mb / 1024).toFixed(2);
             
             preview.innerHTML = `
                 <div class="preview-content">
@@ -741,7 +867,7 @@
                     
                     <div class="preview-details">
                         <div class="detail-item">
-                            <div class="detail-label">📄 File Name</div>
+                            <div class="detail-label">📄 Nama File</div>
                             <div class="detail-value">${book.filename}</div>
                         </div>
                         <div class="detail-item">
@@ -749,7 +875,7 @@
                             <div class="detail-value">${fileSize}</div>
                         </div>
                         <div class="detail-item">
-                            <div class="detail-label">🔖 ID</div>
+                            <div class="detail-label">🔖 ID Buku</div>
                             <div class="detail-value">${book.id}</div>
                         </div>
                         <div class="detail-item">
@@ -757,8 +883,32 @@
                             <div class="detail-value">${book.source}</div>
                         </div>
                         <div class="detail-item">
-                            <div class="detail-label">🔗 Path</div>
-                            <div class="detail-value" style="font-size: 11px; font-family: monospace;">${book.path}</div>
+                            <div class="detail-label">🔗 Path File</div>
+                            <div class="detail-value" style="font-size: 11px; font-family: monospace; word-break: break-all;">${book.path}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">💾 Ukuran GB</div>
+                            <div class="detail-value">${formattedSize} GB</div>
+                        </div>
+                    </div>
+
+                    <div class="file-preview-container">
+                        <div class="file-info-section">
+                            <div class="file-info-title">📋 Informasi File PDF</div>
+                            <div class="file-info-text">
+                                File PDF ini berisi materi lenggkap tentang <strong>${book.title}</strong> dengan ukuran <strong>${fileSize}</strong>. 
+                                Klik tombol di bawah untuk mengunduh file secara langsung dari repository GitHub.
+                            </div>
+                        </div>
+
+                        <div class="file-preview-box">
+                            <div class="file-preview-content">
+                                <p style="font-size: 18px; margin-bottom: 10px;">📄 Preview PDF tidak tersedia</p>
+                                <p style="font-size: 12px; color: #aaa;">
+                                    Gunakan tombol Download PDF di bawah untuk membuka file<br/>
+                                    atau baca langsung di perangkat Anda
+                                </p>
+                            </div>
                         </div>
                     </div>
                     
@@ -773,10 +923,50 @@
 
         function updateStats() {
             document.getElementById('stat-total').textContent = booksData.total_books;
-            document.getElementById('stat-size').textContent = booksData.total_size_mb + ' GB';
+            document.getElementById('stat-size').textContent = booksData.total_size_mb + ' MB';
             document.getElementById('stat-ebooks').textContent = booksData.ebooks_count;
             document.getElementById('stat-pengetahuan').textContent = booksData.pengetahuan_count;
         }
+
+        // Resize handler for column divider
+        let isResizing = false;
+        let startX = 0;
+        let startLeftWidth = 0;
+
+        document.getElementById('resizeDivider').addEventListener('mousedown', (e) => {
+            isResizing = true;
+            startX = e.clientX;
+            const mainLayout = document.getElementById('mainLayout');
+            const computedStyle = window.getComputedStyle(mainLayout);
+            const flexBasis = mainLayout.querySelector('.left-panel').style.flex;
+            startLeftWidth = mainLayout.querySelector('.left-panel').offsetWidth;
+            
+            document.getElementById('resizeDivider').classList.add('dragging');
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+
+            const mainLayout = document.getElementById('mainLayout');
+            const diff = e.clientX - startX;
+            const leftPanel = mainLayout.querySelector('.left-panel');
+            const newWidth = startLeftWidth + diff;
+            const containerWidth = mainLayout.offsetWidth - 4; // 4px divider
+
+            // Set minimum and maximum width
+            const minWidth = 250;
+            const maxWidth = containerWidth - 300;
+
+            if (newWidth >= minWidth && newWidth <= maxWidth) {
+                const percentage = (newWidth / containerWidth) * 100;
+                leftPanel.style.flex = `0 0 ${percentage}%`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isResizing = false;
+            document.getElementById('resizeDivider').classList.remove('dragging');
+        });
 
         // Initialize on page load
         window.addEventListener('load', initializePage);
