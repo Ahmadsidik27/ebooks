@@ -284,7 +284,7 @@
         .preview-content {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 0;
             height: 100%;
         }
 
@@ -955,12 +955,6 @@
             
             preview.innerHTML = `
                 <div class="preview-content">
-                    <div class="preview-header">
-                        <div class="preview-icon">📕</div>
-                        <div class="preview-title">${book.title}</div>
-                        <span class="preview-source-badge">${book.source}</span>
-                    </div>
-
                     <div class="file-preview-container">
                         <div class="file-preview-box">
                             <div class="pdf-viewer">
