@@ -21,7 +21,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
         }
 
@@ -78,12 +78,25 @@
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
-        /* Search Bar */
+        /* Two-Column Layout Container */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Left Column - List */
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
         .search-section {
             background: white;
             padding: 20px;
             border-radius: 12px;
-            margin-bottom: 30px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
@@ -125,12 +138,218 @@
             font-size: 14px;
         }
 
-        /* Stats */
+        /* Books List Container */
+        .books-list {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-height: 700px;
+            overflow-y: auto;
+            border: 1px solid #f0f0f0;
+        }
+
+        .book-list-item {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .book-list-item:hover {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding-left: 11px;
+        }
+
+        .book-list-item.selected {
+            background: #667eea;
+            color: white;
+            border-left: 4px solid #764ba2;
+        }
+
+        .book-list-item.selected .item-title {
+            color: white;
+            font-weight: 700;
+        }
+
+        .book-list-item.selected .item-meta {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .item-title {
+            font-weight: 600;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.3;
+            max-height: 2.6em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .item-meta {
+            font-size: 11px;
+            color: #999;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .item-source {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .book-list-item.selected .item-source {
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+
+        /* Right Column - Preview */
+        .right-panel {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .preview-empty {
+            text-align: center;
+            color: #999;
+            padding: 60px 20px;
+        }
+
+        .preview-empty p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .preview-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .preview-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: -30px -30px 0 -30px;
+            padding-bottom: 20px;
+        }
+
+        .preview-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .preview-title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .preview-source-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .preview-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .detail-item {
+            padding: 12px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            word-break: break-word;
+        }
+
+        .preview-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-download {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-copy {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-copy:hover {
+            background: #e0e0e0;
+        }
+
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
             margin-top: 20px;
+            grid-column: 1 / -1;
         }
 
         .stat-box {
@@ -154,117 +373,6 @@
             letter-spacing: 1px;
         }
 
-        /* Books Grid */
-        .books-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .book-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .book-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .book-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 15px;
-            color: white;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .book-source {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.25);
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 11px;
-            margin-left: auto;
-            font-weight: 600;
-        }
-
-        .book-content {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .book-title {
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 14px;
-            line-height: 1.4;
-            flex: 1;
-        }
-
-        .book-meta {
-            font-size: 12px;
-            color: #999;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .book-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-
-        .btn-download {
-            background: #667eea;
-            color: white;
-            flex: 2;
-        }
-
-        .btn-download:hover {
-            background: #764ba2;
-            transform: scale(1.05);
-        }
-
-        .btn-info {
-            background: #f0f0f0;
-            color: #333;
-        }
-
-        .btn-info:hover {
-            background: #e0e0e0;
-        }
-
         /* Empty State */
         .empty-state {
             text-align: center;
@@ -272,6 +380,7 @@
             background: white;
             border-radius: 12px;
             color: #999;
+            grid-column: 1 / -1;
         }
 
         .empty-state p {
@@ -295,8 +404,27 @@
             line-height: 1.6;
         }
 
-        /* Responsive */
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .main-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .detail-item {
+                grid-column: span 1;
+            }
+
+            .right-panel {
+                position: static;
+                padding: 20px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
             header h1 {
                 font-size: 24px;
             }
@@ -305,8 +433,41 @@
                 gap: 10px;
             }
 
-            .books-container {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .search-bar input {
+                width: 100%;
+            }
+
+            .book-list-item {
+                padding: 12px;
+            }
+
+            .right-panel {
+                padding: 20px;
+                position: static;
+            }
+
+            .books-list {
+                max-height: 400px;
+            }
+
+            .preview-details {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-item {
+                grid-column: span 1;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            nav {
+                gap: 10px;
             }
 
             .search-bar {
@@ -372,6 +533,25 @@
             color: white;
             border-color: #667eea;
         }
+
+        /* Scrollbar Styling */
+        .books-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .books-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 12px;
+        }
+
+        .books-list::-webkit-scrollbar-thumb {
+            background: #667eea;
+            border-radius: 4px;
+        }
+
+        .books-list::-webkit-scrollbar-thumb:hover {
+            background: #764ba2;
+        }
     </style>
 </head>
 <body>
@@ -389,50 +569,58 @@
             </nav>
         </header>
 
-        <!-- Search & Filter -->
-        <div class="search-section">
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="🔍 Cari buku..." onkeyup="filterBooks()">
-                <div class="filter-group">
-                    <select id="sizeFilter" onchange="filterBooks()">
-                        <option value="">Semua Ukuran</option>
-                        <option value="small">< 5 MB</option>
-                        <option value="medium">5 - 20 MB</option>
-                        <option value="large">> 20 MB</option>
-                    </select>
-                    <div class="view-toggle">
-                        <button class="active" onclick="setViewMode('grid'); this.parentElement.children[0].classList.add('active'); this.parentElement.children[1].classList.remove('active');">⊞ Grid</button>
-                        <button onclick="setViewMode('list'); this.parentElement.children[1].classList.add('active'); this.parentElement.children[0].classList.remove('active');">≡ List</button>
+        <!-- Main Layout: Two Columns -->
+        <div class="main-layout">
+            <!-- Left Column: List -->
+            <div class="left-panel">
+                <!-- Search & Filter -->
+                <div class="search-section">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="🔍 Cari buku..." onkeyup="filterBooks()">
+                        <div class="filter-group">
+                            <select id="sizeFilter" onchange="filterBooks()">
+                                <option value="">Semua Ukuran</option>
+                                <option value="small">< 5 MB</option>
+                                <option value="medium">5 - 20 MB</option>
+                                <option value="large">> 20 MB</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Books List -->
+                <div class="books-list" id="booksList">
+                    <div class="book-list-item" style="padding: 40px; text-align: center; color: #999;">
+                        Memuat data buku...
                     </div>
                 </div>
             </div>
 
-            <!-- Stats -->
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-value" id="stat-total">-</div>
-                    <div class="stat-label">Total Buku</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="stat-size">-</div>
-                    <div class="stat-label">Total Ukuran</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="stat-ebooks">-</div>
-                    <div class="stat-label">EBOOKS</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="stat-pengetahuan">-</div>
-                    <div class="stat-label">Pengetahuan</div>
+            <!-- Right Column: Preview -->
+            <div class="right-panel">
+                <div id="previewContainer" class="preview-empty">
+                    <p>👉 Pilih sebuah buku dari daftar di kiri untuk melihat detail lengkapnya</p>
                 </div>
             </div>
         </div>
 
-        <!-- Books Container -->
-        <div class="books-container" id="booksContainer">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p>Memuat data buku...</p>
+        <!-- Stats (Full Width) -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value" id="stat-total">-</div>
+                <div class="stat-label">Total Buku</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="stat-size">-</div>
+                <div class="stat-label">Total Ukuran</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="stat-ebooks">-</div>
+                <div class="stat-label">EBOOKS</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="stat-pengetahuan">-</div>
+                <div class="stat-label">Pengetahuan</div>
             </div>
         </div>
 
@@ -455,7 +643,7 @@
     <script src="books_data.js"></script>
     <script>
         let currentFilter = null;
-        let viewMode = 'grid';
+        let selectedBook = null;
 
         function initializePage() {
             if (typeof booksData !== 'undefined') {
@@ -475,7 +663,6 @@
         function filterBooks() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const sizeFilter = document.getElementById('sizeFilter').value;
-            const container = document.getElementById('booksContainer');
             
             let filteredBooks = booksData.books.filter(book => {
                 // Filter by source
@@ -495,8 +682,8 @@
             });
 
             if (filteredBooks.length === 0) {
-                container.innerHTML = '';
                 document.getElementById('emptyState').style.display = 'block';
+                document.getElementById('booksList').innerHTML = '<div style="padding: 40px; text-align: center; color: #999;">Tidak ada hasil</div>';
             } else {
                 document.getElementById('emptyState').style.display = 'none';
                 displayFilteredBooks(filteredBooks);
@@ -512,29 +699,76 @@
         }
 
         function displayFilteredBooks(books) {
-            const container = document.getElementById('booksContainer');
+            const container = document.getElementById('booksList');
             container.innerHTML = books.map(book => `
-                <div class="book-card" data-id="${book.id}">
-                    <div class="book-header">
-                        <div style="flex: 1; text-align: left;">
-                            <span style="font-size: 11px; font-weight: 600;">📕 PDF</span>
-                        </div>
-                        <span class="book-source">${book.source}</span>
-                    </div>
-                    <div class="book-content">
-                        <div class="book-title">${book.title}</div>
-                        <div class="book-meta">
-                            <span>📦 ${book.size_mb} MB</span>
-                            <span>📄 ID: ${book.id}</span>
-                        </div>
-                        <div class="book-actions">
-                            <a href="${book.path}" class="btn btn-download" download title="Download ${book.filename}">
-                                ⬇️ Download
-                            </a>
-                        </div>
+                <div class="book-list-item" onclick="selectBook(${book.id})">
+                    <div class="item-title">${book.title}</div>
+                    <div class="item-meta">
+                        <span>📦 ${book.size_mb} MB</span>
+                        <span class="item-source">${book.source}</span>
                     </div>
                 </div>
             `).join('');
+        }
+
+        function selectBook(bookId) {
+            const book = booksData.books.find(b => b.id === bookId);
+            if (!book) return;
+            
+            selectedBook = book;
+            
+            // Update UI - highlight selected item
+            document.querySelectorAll('.book-list-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            
+            // Display preview
+            displayPreview(book);
+        }
+
+        function displayPreview(book) {
+            const preview = document.getElementById('previewContainer');
+            const fileSize = book.size_mb > 100 ? (book.size_mb / 1024).toFixed(2) + ' GB' : book.size_mb + ' MB';
+            
+            preview.innerHTML = `
+                <div class="preview-content">
+                    <div class="preview-header">
+                        <div class="preview-icon">📕</div>
+                        <div class="preview-title">${book.title}</div>
+                        <span class="preview-source-badge">${book.source}</span>
+                    </div>
+                    
+                    <div class="preview-details">
+                        <div class="detail-item">
+                            <div class="detail-label">📄 File Name</div>
+                            <div class="detail-value">${book.filename}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">📦 Ukuran</div>
+                            <div class="detail-value">${fileSize}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">🔖 ID</div>
+                            <div class="detail-value">${book.id}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">📂 Sumber</div>
+                            <div class="detail-value">${book.source}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">🔗 Path</div>
+                            <div class="detail-value" style="font-size: 11px; font-family: monospace;">${book.path}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="preview-actions">
+                        <a href="${book.path}" class="btn btn-download" download title="Download ${book.filename}">
+                            ⬇️ Download PDF
+                        </a>
+                    </div>
+                </div>
+            `;
         }
 
         function updateStats() {
@@ -542,16 +776,6 @@
             document.getElementById('stat-size').textContent = booksData.total_size_mb + ' GB';
             document.getElementById('stat-ebooks').textContent = booksData.ebooks_count;
             document.getElementById('stat-pengetahuan').textContent = booksData.pengetahuan_count;
-        }
-
-        function setViewMode(mode) {
-            viewMode = mode;
-            const container = document.getElementById('booksContainer');
-            if (mode === 'list') {
-                container.style.gridTemplateColumns = '1fr';
-            } else {
-                container.style.gridTemplateColumns = 'repeat(auto-fill, minmax(280px, 1fr))';
-            }
         }
 
         // Initialize on page load
