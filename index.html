@@ -6,6 +6,10 @@
     <meta name="description" content="E-Books Library - 124+ koleksi automotive e-book dalam format PDF">
     <meta name="title" content="E-Books Library - Koleksi Lengkap">
     <title>E-Books Library - Automotive Knowledge Hub</title>
+    
+    <!-- PDF.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
     <style>
         * {
             margin: 0;
@@ -398,9 +402,9 @@
         .file-preview-box {
             flex: 1;
             background: #f8f9ff;
-            border: 2px dashed #667eea;
+            border: 2px solid #e0e0e0;
             border-radius: 8px;
-            padding: 20px;
+            padding: 0;
             overflow: auto;
             display: flex;
             align-items: center;
@@ -408,6 +412,80 @@
             font-size: 14px;
             color: #999;
             text-align: center;
+            position: relative;
+        }
+
+        .pdf-viewer {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .pdf-toolbar {
+            display: flex;
+            gap: 10px;
+            padding: 12px 15px;
+            background: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .pdf-toolbar button {
+            padding: 6px 12px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .pdf-toolbar button:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .pdf-toolbar button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pdf-toolbar input {
+            width: 50px;
+            padding: 6px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .pdf-canvas-container {
+            flex: 1;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 15px;
+            background: #e8e8e8;
+        }
+
+        #pdfCanvas {
+            max-width: 100%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .pdf-empty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            color: #999;
         }
 
         .file-preview-content {
@@ -757,9 +835,9 @@
         <!-- Footer -->
         <footer>
             <p>📚 E-Books Library - Automotive Knowledge Management Platform</p>
-            <p>Hosted on GitHub Pages • Last Updated: <span id="lastUpdated">-</span></p>
+            <p>Last Updated: <span id="lastUpdated">-</span></p>
             <p style="font-size: 12px; margin-top: 15px; opacity: 0.7;">
-                Catatan: File PDF disimpan di repository GitHub. Download langsung dari link yang tersedia.
+                ⚠️ Untuk Keperluan Internal Saja - Tidak Diperjual Belikan
             </p>
         </footer>
     </div>
@@ -893,32 +971,105 @@
                     </div>
 
                     <div class="file-preview-container">
-                        <div class="file-info-section">
-                            <div class="file-info-title">📋 Informasi File PDF</div>
-                            <div class="file-info-text">
-                                File PDF ini berisi materi lenggkap tentang <strong>${book.title}</strong> dengan ukuran <strong>${fileSize}</strong>. 
-                                Klik tombol di bawah untuk mengunduh file secara langsung dari repository GitHub.
-                            </div>
-                        </div>
-
                         <div class="file-preview-box">
-                            <div class="file-preview-content">
-                                <p style="font-size: 18px; margin-bottom: 10px;">📄 Preview PDF tidak tersedia</p>
-                                <p style="font-size: 12px; color: #aaa;">
-                                    Gunakan tombol Download PDF di bawah untuk membuka file<br/>
-                                    atau baca langsung di perangkat Anda
-                                </p>
+                            <div class="pdf-viewer">
+                                <div class="pdf-toolbar">
+                                    <button id="prevBtn" onclick="prevPage()">← Prev</button>
+                                    <input type="number" id="pageNum" value="1" min="1" onchange="goToPage()">
+                                    <span id="pageCount" style="font-size: 12px; color: #666;"> / -</span>
+                                    <button id="nextBtn" onclick="nextPage()">Next →</button>
+                                </div>
+                                <div class="pdf-canvas-container">
+                                    <canvas id="pdfCanvas"></canvas>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="preview-actions">
-                        <a href="${book.path}" class="btn btn-download" download title="Download ${book.filename}">
-                            ⬇️ Download PDF
-                        </a>
                     </div>
                 </div>
             `;
+            
+            // Load and render PDF
+            loadPDF('${book.path}');
+        }
+
+        // PDF Viewer Variables
+        let pdfDoc = null;
+        let pageNum = 1;
+        let pageRendering = false;
+        let pageNumPending = null;
+
+        // Setup pdf.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        function loadPDF(url) {
+            const loadingTask = pdfjsLib.getDocument(url);
+            loadingTask.promise.then(function(pdf) {
+                pdfDoc = pdf;
+                document.getElementById('pageCount').textContent = ' / ' + pdf.numPages;
+                renderPage(pageNum);
+            }).catch(function(error) {
+                const container = document.querySelector('.pdf-canvas-container');
+                container.innerHTML = '<div class="pdf-empty">❌ Tidak dapat memuat PDF. File mungkin rusak atau tidak bisa diakses.</div>';
+                console.error('PDF Error:', error);
+            });
+        }
+
+        function renderPage(num) {
+            if (pageRendering) {
+                pageNumPending = num;
+                return;
+            }
+            pageRendering = true;
+            pdfDoc.getPage(num).then(function(page) {
+                const canvas = document.getElementById('pdfCanvas');
+                const ctx = canvas.getContext('2d');
+                const scale = 1.5;
+                const viewport = page.getViewport({scale: scale});
+                
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+                const renderTask = page.render(renderContext);
+                renderTask.promise.then(function() {
+                    pageRendering = false;
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending);
+                        pageNumPending = null;
+                    }
+                });
+            });
+            
+            document.getElementById('pageNum').value = num;
+            
+            // Update button states
+            document.getElementById('prevBtn').disabled = num <= 1;
+            document.getElementById('nextBtn').disabled = num >= (pdfDoc ? pdfDoc.numPages : 1);
+        }
+
+        function nextPage() {
+            if (pageNum < pdfDoc.numPages) {
+                pageNum++;
+                renderPage(pageNum);
+            }
+        }
+
+        function prevPage() {
+            if (pageNum > 1) {
+                pageNum--;
+                renderPage(pageNum);
+            }
+        }
+
+        function goToPage() {
+            const num = parseInt(document.getElementById('pageNum').value);
+            if (num && num > 0 && num <= pdfDoc.numPages) {
+                pageNum = num;
+                renderPage(pageNum);
+            }
         }
 
         function updateStats() {
