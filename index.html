@@ -468,11 +468,29 @@
         .pdf-canvas-container {
             flex: 1;
             overflow: auto;
+            overflow-y: scroll;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             padding: 15px;
             background: #e8e8e8;
+        }
+
+        .pdf-canvas-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .pdf-canvas-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .pdf-canvas-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        .pdf-canvas-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
 
         #pdfCanvas {
@@ -941,33 +959,6 @@
                         <div class="preview-icon">📕</div>
                         <div class="preview-title">${book.title}</div>
                         <span class="preview-source-badge">${book.source}</span>
-                    </div>
-                    
-                    <div class="preview-details">
-                        <div class="detail-item">
-                            <div class="detail-label">📄 Nama File</div>
-                            <div class="detail-value">${book.filename}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">📦 Ukuran</div>
-                            <div class="detail-value">${fileSize}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">🔖 ID Buku</div>
-                            <div class="detail-value">${book.id}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">📂 Sumber</div>
-                            <div class="detail-value">${book.source}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">🔗 Path File</div>
-                            <div class="detail-value" style="font-size: 11px; font-family: monospace; word-break: break-all;">${book.path}</div>
-                        </div>
-                        <div class="detail-item">
-                            <div class="detail-label">💾 Ukuran GB</div>
-                            <div class="detail-value">${formattedSize} GB</div>
-                        </div>
                     </div>
 
                     <div class="file-preview-container">
