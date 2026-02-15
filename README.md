@@ -43,6 +43,7 @@ Platform terintegrasi untuk manajemen koleksi e-book dengan AI chatbot berbasis 
 
 ### 6. **Static Website untuk GitHub Pages** ✨ NEW
 - Deploy 124+ e-book ke GitHub Pages dalam hitungan menit
+- **Two-Column Layout**: Kolom kiri untuk daftar buku, kolom kanan untuk preview detail
 - Search & filter functionality tanpa backend
 - Direct PDF download links
 - Responsive design (mobile/tablet/desktop)
@@ -184,7 +185,8 @@ chmod +x deploy-to-github-pages.sh
 
 ✨ **Features:**
 - 📚 Katalog lengkap 124+ buku (EBOOKS + pengetahuan)
-- 🔍 Search & filter functionality
+- � **Two-Column Layout**: Daftar file di kiri, review lengkap di kanan
+- �🔍 Search & filter functionality
 - 📊 Statistics dashboard
 - 🎨 Responsive design (mobile/tablet/desktop)
 - ⬇️ Direct PDF download links
